@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import RegisterConsumer from "../components/RegisterConsumer";
 
 function Ways() {
   return (
@@ -18,6 +19,12 @@ function Ways() {
             {
               /* Componente do caminho */
             }
+          }
+        />
+        <Route
+          path="consumer/register"
+          element={
+            <RegisterConsumer />
           }
         />
       </Routes>
