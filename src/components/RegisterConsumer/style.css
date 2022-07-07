@@ -2,7 +2,7 @@
     .containerRegisterConsumer{
         display: flex;
         min-width: 100vw;
-        height: 100vh;
+        height: auto;
         background-color: #C2E483;
     }
 
@@ -66,6 +66,17 @@
         padding-left: 10px;
     }
 
+    .registerConsumerForm select{
+        max-width: 356px;
+        height: 44px;
+        border-radius: 40px;
+        border: 1px solid #FFF;
+        background-color: #FFF;
+        font-size: 14px;
+        color: #979797;
+        padding-left: 10px;
+    }
+
     .errorSpan{
         color: #ff6961;
         font-size: 12px;
@@ -87,7 +98,7 @@
 
     .ctaRegisterSeller{
         margin-top: 15px;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 700;
         color: #466D00;
         text-align: center;
@@ -96,7 +107,7 @@
 
     .ctaLink{
         margin-top: 15px;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 700;
         color: #FFF;
         text-decoration: none;
@@ -131,7 +142,7 @@
         justify-content: center;
         align-items: center;
         width: auto;
-        height: 666px;
+        height: 800px;
         background-color: #9ECA4F;
         border: 1px solid #9ECA4F;
         border-radius: 10px 10px 10px 10px;
@@ -183,6 +194,16 @@
         color: #979797;
         padding-left: 15px;
     }
+
+    .registerConsumerForm select{
+        width: auto;
+        height: 44px;
+        border: 1px solid #FFF;
+        border-radius: 40px;
+        font-size: 14px;
+        color: #979797;
+        padding-left: 15px;
+    }
     
     .errorSpan {
         color: #ff6961;
@@ -199,6 +220,9 @@
         width: 170px;
     }
 
+    .passwordContainer select {
+        width: 190px;
+    }
 
     .passwordContainer2{
         display: flex;
@@ -208,7 +232,7 @@
 
     .ctaRegisterSeller{
         margin-top: 15px;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 700;
         color: #466D00;
         text-align: center;
@@ -217,7 +241,7 @@
 
     .ctaLink{
         margin-top: 15px;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 700;
         color: #FFF;
         text-decoration: none;
@@ -251,7 +275,7 @@
         justify-content: center;
         align-items: center;
         min-width: 555px;
-        height: 666px;
+        height: 800px;
         background-color: #9ECA4F;
         border: 1px solid #9ECA4F;
         border-radius: 10px 0px 0px 10px;
@@ -295,7 +319,7 @@
     
     .registerConsumerForm input{
         width: 435px;
-        height: 44px;
+        height: 40px;
         border: 1px solid #FFF;
         border-radius: 40px;
         font-size: 14px;
@@ -303,6 +327,16 @@
         padding-left: 15px;
     }
     
+    .registerConsumerForm select{
+        width: 435px;
+        height: 40px;
+        border: 1px solid #FFF;
+        border-radius: 40px;
+        font-size: 14px;
+        color: #979797;
+        padding-left: 15px;
+    }
+
     .errorSpan {
         color: #ff6961;
         font-size: 12px;
@@ -318,6 +352,9 @@
         width: 200px;
     }
 
+    .passwordContainer select {
+        width: 220px;
+    }
 
     .passwordContainer2{
         display: flex;
@@ -327,7 +364,7 @@
 
     .ctaRegisterSeller{
         margin-top: 15px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
         color: #466D00;
         text-align: center;
@@ -336,7 +373,7 @@
 
     .ctaLink{
         margin-top: 15px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 700;
         color: #FFF;
         text-decoration: none;
@@ -353,7 +390,7 @@
         justify-content: center;
         align-items: center;
         min-width: 555px;
-        height: 666px;
+        height: 800px;
         background-color: #FFF;
         border: 1px solid #FFF;
         border-radius: 0px 10px 10px 0px;
