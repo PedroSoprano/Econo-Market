@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Login from "../components/Login";
 
 function Ways() {
   return (
@@ -13,7 +14,13 @@ function Ways() {
           }
         />
         <Route
-          path="about"
+          path="/Login"
+          element={
+            <Login />
+          }
+        />
+        <Route
+          path="/"
           element={
             {
               /* Componente do caminho */
