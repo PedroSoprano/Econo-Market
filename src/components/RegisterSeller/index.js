@@ -49,7 +49,10 @@ function RegisterSeller () {
             .required('Cidade obrigatória!'),
         endEstado: yup
             .string()
-            .required('Estado obrigatório!')
+            .required('Estado obrigatório!'),
+        horarioRetirada: yup
+            .string()
+            .required('Selecione um horário')
     })
 
     const {
@@ -72,9 +75,9 @@ function RegisterSeller () {
             endRua: data.endRua,
             endNumero: data.endNumero,
             endCidade: data.endCidade,
-            endEstado: data.endEstado
+            endEstado: data.endEstado,
+            horarioRetirada: data.horarioRetirada
         }
-
         axios.post('https://ecomarketapi.herokuapp.com/register', newData)
             .then((res) => LoginSuccess(res))
             .catch((err) => LoginFailed(err))
@@ -126,25 +129,38 @@ function RegisterSeller () {
                     <span className='errorSpan'>{errors.cnpj?.message}</span>
                     <input placeholder='CEP' {...register('endCep')}/>
                     <span className='errorSpan'>{errors.endCep?.message}</span>
-                    <input placeholder="Rua" {...register('endRua')}/>
-                    <span className='errorSpan'>{errors.endRua?.message}</span>
                     <div className="passwordContainer">
+                        <div className="passwordContainer2">
+                            <input placeholder="Rua" {...register('endRua')}/>
+                            <span className='errorSpan'>{errors.endRua?.message}</span>
+                        </div>
                         <div className="passwordContainer2">
                             <input placeholder="Número" {...register('endNumero')}/>
                             <span className='errorSpan'>{errors.endNumero?.message}</span>
                         </div>
+                    </div>
+                    <div className="passwordContainer">
                         <div className="passwordContainer2">
                             <input placeholder="Complemento" {...register('endComplemento')}/>
                         </div>
-                    </div>
-                    <div className="passwordContainer">
                         <div className="passwordContainer2">
                             <input placeholder="Cidade" {...register('endCidade')}/>
                             <span className='errorSpan'>{errors.endCidade?.message}</span>
                         </div>
+                    </div>
+                    <div className="passwordContainer">
                         <div className="passwordContainer2">
                             <input placeholder="Estado" {...register('endEstado')}/>
                             <span className='errorSpan'>{errors.endEstado?.message}</span>
+                        </div>
+                        <div className="passwordContainer2">
+                            <select {...register('horarioRetirada')}>
+                                <option>Horário de Retirada</option>
+                                <option value="8as12">das 08h às 12h</option>
+                                <option value="12as18">das 12h às 18h</option>
+                                <option value="8as18">das 08h às 18h</option>
+                            </select>
+                            <span className='errorSpan'>{errors.horarioRetirada?.message}</span>
                         </div>
                     </div>
                     <div className="passwordContainer">
@@ -158,7 +174,7 @@ function RegisterSeller () {
                         </div>
                     </div>
                     <ButtonRegister type='submit' text='Registrar'/>
-                    <p className="ctaRegisterSeller">Possui um comércio? <Link to='/consumer/register' className="ctaLink">Clique aqui</Link> para cadastrar seu negócio!</p>
+                    <p className="ctaRegisterSeller">É consumidor? <Link to='/consumer/register' className="ctaLink">Clique aqui</Link> para se cadastrar!</p>
                 </form>
             </div>
             <div className="containerRegisterForm2">
