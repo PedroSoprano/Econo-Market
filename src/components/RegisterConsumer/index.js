@@ -113,7 +113,7 @@ function RegisterConsumer () {
                         </div>
                     </div>
                     <ButtonRegister type='submit' text='Registrar'/>
-                    <p className="ctaRegisterSeller">Possui um comércio? <Link to='/' className="ctaLink">Clique aqui</Link> para cadastrar seu negócio!</p>
+                    <p className="ctaRegisterSeller">Possui um comércio? <Link to='/seller/register' className="ctaLink">Clique aqui</Link> para cadastrar seu negócio!</p>
                 </form>
             </div>
             <div className="containerRegisterForm2">
