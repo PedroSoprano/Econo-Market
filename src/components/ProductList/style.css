@@ -1,0 +1,28 @@
+
+.homeConteinerProductsList{
+    min-height: 510px;
+    width: 100%;
+    padding: 12px;
+    padding-right: 0;
+
+}
+
+.homeProductsList{
+    height: 100%;
+    padding: 0;
+    padding-right: 12px;
+
+    list-style: none;    
+
+    display: flex;
+    overflow-x: scroll;
+    gap: 25px;
+}
+
+@media(min-width:800px){
+
+    .homeProductsList{
+        flex-wrap: wrap;
+    }
+
+}

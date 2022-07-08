@@ -1,5 +1,9 @@
+import Ways from "./Routes/routes"
+
 function App() {
-  return <></>;
+  return (
+    <Ways/>
+    )
 }
 
-export default App;
+export default App

@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Home from "../pages/Home";
 
 function Ways() {
   return (
@@ -6,11 +7,7 @@ function Ways() {
       <Routes>
         <Route
           path="/"
-          element={
-            {
-              /* Componente do caminho */
-            }
-          }
+          element={<Home/>}
         />
         <Route
           path="about"
