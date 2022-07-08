@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Login from "../components/Login";
 import Home from "../pages/Home";
 import RegisterConsumer from "../components/RegisterConsumer";
 import RegisterSeller from "../components/RegisterSeller";
@@ -8,8 +9,9 @@ function Ways() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
         <Route
-          path="about"
+          path="/"
           element={
             {
               /* Componente do caminho */
