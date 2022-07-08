@@ -5,7 +5,7 @@ import Logo from '../../Assets/Login/logo.png'
 import TaskImg from '../../Assets/Login/login-img.svg'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from "axios";
+import axios, { Axios } from "axios";
 import { ButtonRegister } from "../Button";
 import {toast} from "react-toastify";
 
@@ -22,8 +22,7 @@ function Login () {
             .email('E-mail inválido!'),
         password: yup
             .string()
-            .required('Senha obrigatória!')
-            .matches('^(?=.*[A-Z])(?=.*[!#@$%&?])(?=.*[0-9])(?=.*[a-z]).{6,15}$', 'Use uma senha mais forte'),
+            .required('Senha obrigatória!'),
     })
 
     const {
@@ -44,9 +43,25 @@ function Login () {
             .catch((err) => LoginFailed(err))
     }
 
+    function validateUser(data)
+    {
+        const newData = {}
+        axios.get('https://ecomarketapi.herokuapp.com/users', data.id)
+        .then((res) => newData = res.data)
+        .catch((err) => newData = err)
+        if(newData.sellerId != "")
+        {
+            navigate('/seller')
+        }
+        else
+        {
+            navigate('/consumer')
+        }
+    }
+
     const LoginSuccess = (data) => {
         console.log (data)
-        toast.success('Cadastrado com sucesso!', {
+        toast.success('Logado com sucesso!', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -55,11 +70,14 @@ function Login () {
             draggable: true,
             progress: undefined,
             });
-        setTimeout(() => {navigate('/')}, 2000)
+        setTimeout(() => validateUser(data),2000)
     }
 
+    
+
+
     const LoginFailed = (data) => {
-        toast.error('E-mail já cadastrado', {
+        toast.error('Dados Incorretos', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
