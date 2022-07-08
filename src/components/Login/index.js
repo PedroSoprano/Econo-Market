@@ -5,9 +5,10 @@ import Logo from '../../Assets/Login/logo.png'
 import TaskImg from '../../Assets/Login/login-img.svg'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { ButtonRegister } from "../Button";
 import {toast} from "react-toastify";
+import { useState } from "react";
 
 
 
@@ -42,25 +43,25 @@ function Login () {
             .then((res) => LoginSuccess(res))
             .catch((err) => LoginFailed(err))
     }
-
+    const [User, setUser] = useState({
+        email: '',
+        password: '',
+        id: ''
+    })
+    console.log(User)
     function validateUser(data)
     {
-        const newData = {}
-        axios.get('https://ecomarketapi.herokuapp.com/users', data.id)
-        .then((res) => newData = res.data)
-        .catch((err) => newData = err)
-        if(newData.sellerId != "")
+        if(data.data.user.cnpj === "")
         {
-            navigate('/seller')
+            navigate('/consumer')
         }
         else
         {
-            navigate('/consumer')
+            navigate('/seller')
         }
     }
 
     const LoginSuccess = (data) => {
-        console.log (data)
         toast.success('Logado com sucesso!', {
             position: "top-right",
             autoClose: 5000,
@@ -70,7 +71,14 @@ function Login () {
             draggable: true,
             progress: undefined,
             });
-        setTimeout(() => validateUser(data),2000)
+        localStorage.setItem('token', data.data.accessToken)
+        const newUser = {
+            email: data.data.user.email,
+            nome: data.data.user.name,
+            id: data.data.user.id
+        }
+        setUser(newUser)
+        setTimeout(() =>validateUser(data) ,2000)
     }
 
     
