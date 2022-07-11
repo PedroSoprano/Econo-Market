@@ -41,7 +41,18 @@ function ReserveButton({ product, type }) {
           <div className="editBtn">Editar</div>
         </>
       )}
-      {type === "home" && (
+      {type === "home"  && (
+        <>
+          <button className="removeBtn" onClick={handleRemoveProduct}>
+            -
+          </button>
+          <div>{quantity > 0 ? quantity : "reservar"}</div>
+          <button className="addBtn" onClick={handleAddProduct}>
+            +
+          </button>
+        </>
+      )}
+      {type === "wishlist"  && (
         <>
           <button className="removeBtn" onClick={handleRemoveProduct}>
             -

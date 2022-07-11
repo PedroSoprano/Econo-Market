@@ -1,13 +1,13 @@
 import "./style.css";
 
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaTrashAlt } from "react-icons/fa";
 
 import { useContext } from "react";
 import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
 
 function Product({ type, product }) {
-  const { addToWishlist } = useContext(WishlistContext);
+  const { addToWishlist, deleteWishList } = useContext(WishlistContext);
 
   const formatedOriginalPrice = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -22,6 +22,10 @@ function Product({ type, product }) {
   const handleAddWishlist = () => {
     addToWishlist(product);
   };
+
+  const handleDeleteWishlist = (id) => {
+    deleteWishList(id)
+  }
 
   return (
     <>
@@ -43,6 +47,9 @@ function Product({ type, product }) {
               {product
                 ? type === "home" && <FaHeart onClick={handleAddWishlist} />
                 : null}
+              {product
+                ? type === "wishlist" && <FaTrashAlt onClick={() => handleDeleteWishlist(product.id)} />
+                : null }
             </div>
           </div>
 
