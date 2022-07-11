@@ -1,0 +1,59 @@
+import "./style.css";
+
+import { FaHeart } from "react-icons/fa";
+
+import { useContext } from "react";
+import ReserveButton from "../ReserveButton";
+import { WishlistContext } from "../../Providers/wishlist";
+
+function Product({ type, product }) {
+  const { addToWishlist, getWishlist } = useContext(WishlistContext);
+
+  const formatedOriginalPrice = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(product.originalPrice);
+
+  const formatedPromotionalPrice = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(product.promotionalPrice);
+
+  const handleAddWishlist = () => {
+    console.log(getWishlist(1));
+    console.log(product);
+
+    addToWishlist(product);
+  };
+
+  return (
+    <>
+      <section className="productContainer">
+        <div className="productImgContainer">
+          <img className="productImg" src={product.image} alt={product.name} />
+        </div>
+        <div className="productInfo">
+          <h3 className="productTitle">{product.name}</h3>
+          <div className="productDueDate">{product.dueDate}</div>
+
+          <div className="priceWishlist">
+            <div className="productPrices">
+              <div className="pastPrice">{formatedOriginalPrice}</div>
+              <div className="currentprice">{formatedPromotionalPrice}</div>
+            </div>
+
+            <div className="wishlistBtn">
+              {product
+                ? type === "home" && <FaHeart onClick={handleAddWishlist} />
+                : null}
+            </div>
+          </div>
+
+          <ReserveButton product={product} />
+        </div>
+      </section>
+    </>
+  );
+}
+
+export default Product;
