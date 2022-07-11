@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { ProductContext } from "../../Providers/products";
 import { ReservedContext } from "../../Providers/reserved";
 
-function ReserveButton({ product }) {
+function ReserveButton({ product, type }) {
   const { addToReserved, removeFromReserved } = useContext(ProductContext);
   const { userReservedList } = useContext(ReservedContext);
   
@@ -36,13 +36,22 @@ function ReserveButton({ product }) {
   };
   return (
     <div className="reserveBtn">
-      <button className="removeBtn" onClick={handleRemoveProduct}>
-        -
-      </button>
-      <div>{quantity > 0 ? quantity : "reservar"}</div>
-      <button className="addBtn" onClick={handleAddProduct}>
-        +
-      </button>
+      {type === "market-dashboard" && (
+        <>
+          <div className="editBtn">Editar</div>
+        </>
+      )}
+      {type === "home" && (
+        <>
+          <button className="removeBtn" onClick={handleRemoveProduct}>
+            -
+          </button>
+          <div>{quantity > 0 ? quantity : "reservar"}</div>
+          <button className="addBtn" onClick={handleAddProduct}>
+            +
+          </button>
+        </>
+      )}
     </div>
   );
 }

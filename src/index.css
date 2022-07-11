@@ -1,9 +1,12 @@
 :root {
   --white: #ffffff;
   --light-gray: #f9f9f9;
+  --light-gray-text: #d9d9d9;
+  --light-gray2: #e6eaef;
 
   --dark-blue: #222f3e;
   --medium-blue: #0b4870;
+  --light-blue: #f2f5f9;
   --light-blue-gray: #9eb0c3;
   --dark-blue-gray: #576574;
 

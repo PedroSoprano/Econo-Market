@@ -8,6 +8,7 @@
 
   font-size: 20px;
   font-weight: 700;
+  text-align: center;
   color: var(--white);
 
   display: flex;
@@ -15,6 +16,12 @@
   align-items: center;
 
   margin-top: 20px;
+
+  cursor: pointer;
+}
+
+.editBtn {
+  width: 100%;
 }
 
 .addBtn,
