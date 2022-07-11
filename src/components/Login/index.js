@@ -108,7 +108,7 @@ function Login() {
             <ButtonRegister type="submit" text="Registrar" />
             <p className="ctaRegisterSeller">
               Não é cadastrado?{" "}
-              <Link to="/" className="ctaLink">
+              <Link to="/consumer/register" className="ctaLinkLogin">
                 Clique aqui
               </Link>{" "}
               e registre-se para aproveitar o Economarketing!
