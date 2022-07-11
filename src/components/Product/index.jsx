@@ -7,7 +7,7 @@ import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
 
 function Product({ type, product }) {
-  const { addToWishlist, getWishlist } = useContext(WishlistContext);
+  const { addToWishlist } = useContext(WishlistContext);
 
   const formatedOriginalPrice = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -20,15 +20,12 @@ function Product({ type, product }) {
   }).format(product.promotionalPrice);
 
   const handleAddWishlist = () => {
-    console.log(getWishlist(1));
-    console.log(product);
-
     addToWishlist(product);
   };
 
   return (
     <>
-      <section className="productContainer">
+      <li className="productContainer">
         <div className="productImgContainer">
           <img className="productImg" src={product.image} alt={product.name} />
         </div>
@@ -49,9 +46,9 @@ function Product({ type, product }) {
             </div>
           </div>
 
-          <ReserveButton product={product} />
+          <ReserveButton type={type} product={product} />
         </div>
-      </section>
+      </li>
     </>
   );
 }
