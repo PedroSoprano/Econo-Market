@@ -6,15 +6,18 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { WishlistProvider } from "./Providers/wishlist";
 import { ProductProvider } from "./Providers/products";
+import { ReservedProvider } from "./Providers/reserved";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ProductProvider>
       <WishlistProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <ReservedProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ReservedProvider>
       </WishlistProvider>
     </ProductProvider>
   </React.StrictMode>
