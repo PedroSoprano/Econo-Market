@@ -51,9 +51,9 @@ function WishList () {
                 </div>
                 <div className="btnText">Produtos reservados</div>
             </button>
-            <FormDialog >
+            {/* <FormDialog >
                 <EditSellerForm />
-            </FormDialog>
+            </FormDialog> */}
             </div>
             </div>
             <ul className="homeProductsList">
