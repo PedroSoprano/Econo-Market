@@ -10,7 +10,7 @@ export const ReservedProvider = ({ children }) => {
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3MjkwNjU0LCJleHAiOjE2NTcyOTQyNTQsInN1YiI6IjEifQ.9qC_qujWuv3f59vPSkNZAaCkhnWIOYGgYMPP0nuwrDU";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3NDgyNTY2LCJleHAiOjE2NTc0ODYxNjYsInN1YiI6IjEifQ.a0kPcfMLVfH3OagjxOAr2z8cvXZz0baNgDoKTay_pI0";
 
   const userId = 1;
 
