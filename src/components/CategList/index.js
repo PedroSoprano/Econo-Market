@@ -26,7 +26,7 @@ function CategList(){
         <section className="categoryContainer">
             <ul className="categoryList">
                 <li onClick={(e) => handleFilter(e)} type="laticínios">
-                    <img src="Laticíneos.png" alt="Laticíneos"/>
+                    <img src="Laticíneos.png" alt="Laticíneos"/>
                     <h3>Laticínios</h3>
                 </li>
                 <li onClick={(e) => handleFilter(e)} type="grãos">
