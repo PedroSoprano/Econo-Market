@@ -43,13 +43,9 @@ function Login() {
       .catch((err) => LoginFailed(err));
   };
 
-  console.log(user);
-  function validateUser(data) {
-    if (data.data.user.cnpj === "") {
-      navigate("/consumer");
-    } else {
-      navigate("/seller");
-    }
+  
+  function validateUser() {
+    localStorage.getItem("type") === "consumer" ? navigate("/") : navigate("/dashboard") 
   }
 
   const LoginSuccess = (data) => {
@@ -63,8 +59,9 @@ function Login() {
       progress: undefined,
     });
     localStorage.setItem("token", data.data.accessToken);
-    setUser(data.data.user);
-    setTimeout(() => validateUser(data), 2000);
+    localStorage.setItem("id", data.data.user.id);
+    data.data.user.cnpj === undefined ? localStorage.setItem("type", "consumer") : localStorage.setItem("type", "seller")
+    validateUser();
   };
 
   const LoginFailed = (data) => {

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoMdSearch, IoMdPerson } from "react-icons/io";
+import { IoMdSearch, IoMdPerson, IoIosHeart } from "react-icons/io";
 import { ProductContext } from "../../Providers/products";
 import { UserContext } from "../../Providers/userProvider";
 
@@ -36,7 +36,7 @@ function Header() {
   return (
     <>
       <header>
-        <img src="./economarket-logo.png" alt="logo" />
+        <img src="./economarket-logo.png" alt="logo" onClick={() => navigate("/")}/>
         <div className="containerUtilities">
           <div className="containerSearch">
             <input
@@ -48,6 +48,14 @@ function Header() {
               <IoMdSearch className="iconSearch" />
             </button>
           </div>
+          {localStorage.getItem('type') === "consumer" &&
+          <div className="containerPerson">
+            <button className="iconPersonBtn" onClick={() => navigate("/wishlist")}>
+              <IoIosHeart className="iconPerson"/>
+            </button>
+          </div>
+          }
+          
           <div className="containerPerson">
             <button
               className="iconPersonBtn"
@@ -57,7 +65,7 @@ function Header() {
             </button>
             {showModal && (
               <div className="modalMenu">
-                {user ? (
+                {localStorage.getItem('id') ? (
                   <>
                     <button onClick={() => navigate("/dashboard")}>
                       Dashboard

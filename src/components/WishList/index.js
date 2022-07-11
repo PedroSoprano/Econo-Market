@@ -27,7 +27,7 @@ function WishList () {
         })
         .then((res) => setProductsWishList(res.data.wishlist))
         .catch((err) => console.log(err))
-    }, [productsWishlist])
+    })
 
     return (
         <>

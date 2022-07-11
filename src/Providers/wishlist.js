@@ -1,20 +1,24 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
+import { UserContext } from "./userProvider";
 
 export const WishlistContext = createContext([]);
 
 export const WishlistProvider = ({ children }) => {
 
+  // const { user } = useContext(UserContext)
+  // console.log(user)
   const [productsWishlist, setProductsWishList] = useState([])
 
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
   const token = localStorage.getItem("token");
-  const idUser = localStorage.getItem('id');
+  const idUser = localStorage.getItem("id");
+  
 
   const notifyErrorNoToken = () =>
     toast.error("Você precisa estar logado para favoritar um produto.");
@@ -32,6 +36,7 @@ export const WishlistProvider = ({ children }) => {
   const addToWishlist = (product) => {
     
     const newObject = {
+      id: product.id,
       image: product.image,
       name: product.name,
       dueDate: product.dueDate,
@@ -56,6 +61,8 @@ export const WishlistProvider = ({ children }) => {
         .then((response) => notifySuccess())
         .catch((err) => {
           if (err.response.status === 500) {
+            console.log(err)
+            console.log(product.id)
             notifyError();
           }
         });
