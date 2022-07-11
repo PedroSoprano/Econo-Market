@@ -20,7 +20,12 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.5",
+<<<<<<< HEAD
+    "swiper": "^8.2.6",
+    "vercel": "^27.0.1",
+=======
     "swiper": "^8.3.0",
+>>>>>>> fede05eb2222b65f290b15c990fd4f6ccda6abde
     "web-vitals": "^2.1.0",
     "yup": "^0.32.11"
   },

@@ -7,18 +7,21 @@ import App from "./App";
 import { WishlistProvider } from "./Providers/wishlist";
 import { ProductProvider } from "./Providers/products";
 import { ReservedProvider } from "./Providers/reserved";
+import { UserProvider } from "./Providers/userProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ProductProvider>
-      <WishlistProvider>
-        <ReservedProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </ReservedProvider>
-      </WishlistProvider>
-    </ProductProvider>
+    <UserProvider>
+      <ProductProvider>
+        <WishlistProvider>
+          <ReservedProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </ReservedProvider>
+        </WishlistProvider>
+      </ProductProvider>
+    </UserProvider>
   </React.StrictMode>
 );
