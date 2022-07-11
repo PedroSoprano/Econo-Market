@@ -10,14 +10,6 @@ function Ways() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
-        <Route
-          path="/"
-          element={
-            {
-              /* Componente do caminho */
-            }
-          }
-        />
         <Route path="consumer/register" element={<RegisterConsumer />} />
         <Route path="seller/register" element={<RegisterSeller />} />
       </Routes>

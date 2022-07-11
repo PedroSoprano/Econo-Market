@@ -1,52 +1,46 @@
 import { useContext, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
 
-import "./style.css"
-
-// import { ProductsContext } from "../../Providers/ProductsContext"
-// import { UserContext } from "../../Providers/UserContext"
+import "./style.css";
+import { useState } from "react";
+import { ProductContext } from "../../Providers/products";
+// import { UserContext } from "../../Providers/user";
 
 import Product from "../Product";
 
-import "./style.css"
+import "./style.css";
 
+function ProductList({ type }) {
+  const { productList, setProductList } = useContext(ProductContext);
 
-function ProductList({type}){
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get("https://ecomarketapi.herokuapp.com/products")
+      .then((res) => {
+        setProductList(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-    // const {productList, setProductList, filteredProducts} = useContext(ProductsContext)
-    // const {user} = useContext(UserContext)
-
-
-    // useEffect(() => {
-    //     axios.get("https://ecomarketapi.herokuapp.com/products")
-    //         .then((res) => {
-    //             setProductList(res.data)
-    //         })
-    //         .catch((err) => console.log(err))
-    // },[])
-
-
-    return(
-        <section className="homeConteinerProductsList">
-            <ul className="homeProductsList">
-                {/* {filteredProducts.length > 0? (
-
-                    filteredProducts.map((product) => (
-                        <li key={product.id}>{product.name}</li>
-                        //apagar linha de cima e descomentar a linha de baixo quando já tiver o componente Product criado
-                        // <Product key={product.id} type={type}/>
-                    ))
-                ) : (
-                    productList.map((product) => (
-                        <li key={product.id}>{product.name}</li>
-                        //apagar linha de cima e descomentar a linha de baixo quando já tiver o componente Product criado
-                        // <Product key={product.id} type={type}/>
-                    ))
-                )} */}
-            </ul>
-        </section>
-    )
+  return (
+    <section className="homeConteinerProductsList">
+      <ul className="homeProductsList">
+        {filteredProducts.length > 0
+          ? filteredProducts.map((product) => (
+              // <li key={product.id}>{product.name}</li>
+              //apagar linha de cima e descomentar a linha de baixo quando já tiver o componente Product criado
+              <Product key={product.id} type={type} product={product} />
+            ))
+          : productList.map((product) => (
+              // <li key={product.id}>{product.name}</li>
+              //apagar linha de cima e descomentar a linha de baixo quando já tiver o componente Product criado
+              <Product key={product.id} type={type} product={product} />
+            ))}
+      </ul>
+    </section>
+  );
 }
 
-export default ProductList
+export default ProductList;
