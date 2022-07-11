@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,17 +8,13 @@ import axios from "axios";
 export const WishlistContext = createContext([]);
 
 export const WishlistProvider = ({ children }) => {
+
+  const [productsWishlist, setProductsWishList] = useState([])
+
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
-<<<<<<< HEAD
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3NDgyNTY2LCJleHAiOjE2NTc0ODYxNjYsInN1YiI6IjEifQ.a0kPcfMLVfH3OagjxOAr2z8cvXZz0baNgDoKTay_pI0";
-=======
-  // const token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3MjkwNjU0LCJleHAiOjE2NTcyOTQyNTQsInN1YiI6IjEifQ.9qC_qujWuv3f59vPSkNZAaCkhnWIOYGgYMPP0nuwrDU";
->>>>>>> develop
-
-  const token = JSON.parse(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
+  const idUser = localStorage.getItem('id');
 
   const notifyErrorNoToken = () =>
     toast.error("Você precisa estar logado para favoritar um produto.");
@@ -28,12 +24,31 @@ export const WishlistProvider = ({ children }) => {
   const notifySuccess = () =>
     toast.success("Produto adicionado à lista de desejos!");
 
+  function deleteSuccess () { 
+    toast.success("Produto removido com sucesso!");
+  }
+  
+
   const addToWishlist = (product) => {
+    
+    const newObject = {
+      image: product.image,
+      name: product.name,
+      dueDate: product.dueDate,
+      category: product.category,
+      description: product.description,
+      originalPrice: product.originalPrice,
+      promotionalPrice: product.promotionalPrice,
+      quantity: product.quantity,
+      sellerId: product.userId,
+      userId: parseInt(idUser)
+    }
+
     if (token === null) {
       notifyErrorNoToken();
     } else {
       axios
-        .post(`${base_URL}/wishlist`, product, {
+        .post(`${base_URL}/wishlist`, newObject, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -54,12 +69,22 @@ export const WishlistProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => response)
+      .then((response) => console.log(response))
       .catch((err) => console.log(err));
   };
 
+  const deleteWishList = (id) => {
+    axios.delete(`${base_URL}/wishlist/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => deleteSuccess())
+      .catch((err) => console.log(err))
+  }
+
   return (
-    <WishlistContext.Provider value={{ addToWishlist, getWishlist }}>
+    <WishlistContext.Provider value={{ addToWishlist, getWishlist, deleteWishList, productsWishlist, setProductsWishList }}>
       {children}
     </WishlistContext.Provider>
   );

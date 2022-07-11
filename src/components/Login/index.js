@@ -72,6 +72,7 @@ function Login () {
             progress: undefined,
             });
         localStorage.setItem('token', data.data.accessToken)
+        localStorage.setItem('id', data.data.user.id)
         const newUser = {
             email: data.data.user.email,
             nome: data.data.user.name,
