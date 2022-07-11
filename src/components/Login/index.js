@@ -14,7 +14,7 @@ import { UserContext } from "../../Providers/userProvider";
 function Login() {
   const navigate = useNavigate();
 
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const formSchema = yup.object().shape({
     email: yup
@@ -43,7 +43,7 @@ function Login() {
       .catch((err) => LoginFailed(err));
   };
 
-  console.log(User);
+  console.log(user);
   function validateUser(data) {
     if (data.data.user.cnpj === "") {
       navigate("/consumer");
