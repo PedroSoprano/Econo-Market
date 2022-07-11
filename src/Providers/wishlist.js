@@ -10,15 +10,10 @@ export const WishlistContext = createContext([]);
 export const WishlistProvider = ({ children }) => {
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
-<<<<<<< HEAD
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3NDgyNTY2LCJleHAiOjE2NTc0ODYxNjYsInN1YiI6IjEifQ.a0kPcfMLVfH3OagjxOAr2z8cvXZz0baNgDoKTay_pI0";
-=======
   // const token =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3MjkwNjU0LCJleHAiOjE2NTcyOTQyNTQsInN1YiI6IjEifQ.9qC_qujWuv3f59vPSkNZAaCkhnWIOYGgYMPP0nuwrDU";
->>>>>>> develop
 
-  const token = JSON.parse(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
 
   const notifyErrorNoToken = () =>
     toast.error("Você precisa estar logado para favoritar um produto.");

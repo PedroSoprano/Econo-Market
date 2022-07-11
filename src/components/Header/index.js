@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdSearch, IoMdPerson } from "react-icons/io";
 
@@ -57,7 +57,7 @@ function Header() {
               <div className="modalMenu">
                 {/* {user? ( */}
                 <>
-                  <button onClick={() => navigate("/dashboard")}>
+                  <button onClick={() => navigate("/seller/dashboard")}>
                     Dashboard
                   </button>
                   <button onClick={logout}>Logout</button>
@@ -65,7 +65,7 @@ function Header() {
                 {/* ) : ( */}
                 <>
                   <button onClick={() => navigate("/login")}>Login</button>
-                  <button onClick={() => navigate("/register")}>
+                  <button onClick={() => navigate("/consumer/register")}>
                     Cadastro
                   </button>
                 </>
