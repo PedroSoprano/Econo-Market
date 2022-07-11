@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdSearch, IoMdPerson } from "react-icons/io";
-
-import { ProductContext } from "../../Providers/ProductsContext";
-import { UserContext } from "../../Providers/UserContext";
+import { ProductContext } from "../../Providers/products";
+import { UserContext } from "../../Providers/userProvider";
 
 import "./style.css";
 
