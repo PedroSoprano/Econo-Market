@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import RegisterConsumer from "../components/RegisterConsumer";
 import RegisterSeller from "../components/RegisterSeller";
 import DashboardMercado from "../components/DashboardMercado";
+import WishList from "../components/WishList";
 
 function Ways() {
   return (
@@ -14,6 +15,7 @@ function Ways() {
         <Route exact path="/dashboard" element={<DashboardMercado />} />
         <Route exact path="consumer/register" element={<RegisterConsumer />} />
         <Route exact path="seller/register" element={<RegisterSeller />} />
+        <Route exact path="/wishlist" element={<WishList />}/>
       </Routes>
     </>
   );
