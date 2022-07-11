@@ -41,7 +41,7 @@ export const ReservedProvider = ({ children }) => {
 
   return (
     <ReservedContext.Provider
-      value={{ userReservedListRequest, addToReservedItem, userReservedList }}
+      value={{ userReservedListRequest, addToReservedItem, userReservedList, setUserReservedList }}
     >
       {children}
     </ReservedContext.Provider>

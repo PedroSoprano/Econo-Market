@@ -75,6 +75,7 @@ export const ProductProvider = ({ children }) => {
         productsRequest,
         addToReserved,
         removeFromReserved,
+        setProductList,
       }}
     >
       {children}
