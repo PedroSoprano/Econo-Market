@@ -7,10 +7,13 @@ import { ReservedContext } from "../../Providers/reserved";
 function ReserveButton({ product }) {
   const { addToReserved, removeFromReserved } = useContext(ProductContext);
   const { userReservedList } = useContext(ReservedContext);
-
+  
   const [quantity, setQuantity] = useState(0);
 
   const handleAddProduct = () => {
+
+    console.log(userReservedList)
+
     const filterReservedProduct = userReservedList.filter(
       (reservedProduct) => reservedProduct.id === product.id
     );
