@@ -52,7 +52,7 @@ function EditConsumerForm () {
       <div className="formTitle">Editar Informações</div>
 
       <div className="formGroup">
-        <label className="editFormLabel" for="name">
+        <label className="editFormLabel">
           Nome
         </label>
         <input 
@@ -67,7 +67,7 @@ function EditConsumerForm () {
       </div>
 
       <div className="formGroup">
-        <label className="editFormLabel" for="email">
+        <label className="editFormLabel">
           E-mail
         </label>
         <input
@@ -82,7 +82,7 @@ function EditConsumerForm () {
       </div>
 
       <div className="formGroup">
-        <label className="editFormLabel" for="cnpj">
+        <label className="editFormLabel">
           CPF
         </label>
         <input
