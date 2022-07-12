@@ -24,39 +24,43 @@ function Product({ type, product }) {
   };
 
   const handleDeleteWishlist = (id) => {
-    deleteWishList(id)
-  }
+    deleteWishList(id);
+  };
 
   return (
-    <>
-      <li className="productContainer">
-        <div className="productImgContainer">
-          <img className="productImg" src={product.image} alt={product.name} />
-        </div>
-        <div className="productInfo">
-          <h3 className="productTitle">{product.name}</h3>
-          <div className="productDueDate">{product.dueDate}</div>
+    <li className="productContainer">
+      <div className="productImgContainer">
+        <img className="productImg" src={product.image} alt={product.name} />
+      </div>
+      <div className="productInfo">
+        <h3 className="productTitle">{product.name}</h3>
+        <div className="productDueDate">{product.dueDate}</div>
 
-          <div className="priceWishlist">
-            <div className="productPrices">
-              <div className="pastPrice">{formatedOriginalPrice}</div>
-              <div className="currentprice">{formatedPromotionalPrice}</div>
-            </div>
-
-            <div className="wishlistBtn">
-              {product
-                ? type === "home" && <FaHeart onClick={handleAddWishlist} />
-                : null}
-              {product
-                ? type === "wishlist" && <FaTrashAlt onClick={() => handleDeleteWishlist(product.id)} />
-                : null }
-            </div>
+        <div className="priceWishlist">
+          <div className="productPrices">
+            <div className="pastPrice">{formatedOriginalPrice}</div>
+            <div className="currentprice">{formatedPromotionalPrice}</div>
           </div>
 
-          <ReserveButton type={type} product={product} />
+          <div className="wishlistBtn">
+            {product
+              ? type === "home" && <FaHeart onClick={handleAddWishlist} />
+              : null}
+            {product
+              ? type === "wishlist" && (
+                  <FaTrashAlt
+                    onClick={() => handleDeleteWishlist(product.id)}
+                  />
+                )
+              : null}
+          </div>
         </div>
-      </li>
-    </>
+
+        {type === "reservedSeller" || type === "reservedConsumer" ? null : (
+          <ReserveButton type={type} product={product} />
+        )}
+      </div>
+    </li>
   );
 }
 

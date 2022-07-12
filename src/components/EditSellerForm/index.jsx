@@ -5,7 +5,7 @@ function EditSellerForm() {
     <form className="editSellerForm">
       <div className="formTitle">Editar Informações</div>
 
-      <div className="formGroup">
+      {/* <div className="formGroup">
         <label className="editFormLabel" for="name">
           Nome
         </label>
@@ -124,7 +124,7 @@ function EditSellerForm() {
         />
       </div>
 
-      <button className="saveEditBtn">Salvar</button>
+      <button className="saveEditBtn">Salvar</button> */}
     </form>
   );
 }

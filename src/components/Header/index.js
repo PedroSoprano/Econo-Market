@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdSearch, IoMdPerson, IoIosHeart } from "react-icons/io";
 import { ProductContext } from "../../Providers/products";
@@ -36,7 +36,11 @@ function Header() {
   return (
     <>
       <header>
-        <img src="./economarket-logo.png" alt="logo" onClick={() => navigate("/")}/>
+        <img
+          src="https://i.ibb.co/F05Rdfr/economarket-logo.png"
+          alt="logo"
+          onClick={() => navigate("/")}
+        />
         <div className="containerUtilities">
           <div className="containerSearch">
             <input
@@ -48,14 +52,17 @@ function Header() {
               <IoMdSearch className="iconSearch" />
             </button>
           </div>
-          {localStorage.getItem('type') === "consumer" &&
-          <div className="containerPerson">
-            <button className="iconPersonBtn" onClick={() => navigate("/wishlist")}>
-              <IoIosHeart className="iconPerson"/>
-            </button>
-          </div>
-          }
-          
+          {localStorage.getItem("type") === "consumer" && (
+            <div className="containerPerson">
+              <button
+                className="iconPersonBtn"
+                onClick={() => navigate("/wishlist")}
+              >
+                <IoIosHeart className="iconPerson" />
+              </button>
+            </div>
+          )}
+
           <div className="containerPerson">
             <button
               className="iconPersonBtn"
@@ -65,9 +72,9 @@ function Header() {
             </button>
             {showModal && (
               <div className="modalMenu">
-                {localStorage.getItem('id') ? (
+                {localStorage.getItem("id") ? (
                   <>
-                    <button onClick={() => navigate("/dashboard")}>
+                    <button onClick={() => navigate("/seller/dashboard")}>
                       Dashboard
                     </button>
                     <button onClick={logout}>Logout</button>
