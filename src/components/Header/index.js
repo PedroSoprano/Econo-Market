@@ -34,7 +34,7 @@ function Header() {
   return (
     <>
       <header>
-        <img src="./economarket-logo.png" alt="logo" />
+        <img src="https://i.ibb.co/F05Rdfr/economarket-logo.png" alt="logo" />
         <div className="containerUtilities">
           <div className="containerSearch">
             <input

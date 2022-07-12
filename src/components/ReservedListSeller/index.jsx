@@ -1,15 +1,22 @@
-import { useState } from "react";
+import "./style.css";
+
+import { ProductContext } from "../../Providers/products";
+
+import { useState, useContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import Header from "../Header";
+import { FaUser, FaShoppingBasket } from "react-icons/fa";
+
 import PageTitle from "../PageTitle";
 import DialogMenu from "../DialogMenu";
 import FormDialog from "../FormDialog";
 import ProductForm from "../ProductForm";
-import Footer from "../Footer";
+import EditSellerForm from "../EditSellerForm";
 
 function ReservedListSeller() {
+  const { productList } = useContext(ProductContext);
+
   const navigate = useNavigate();
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -31,13 +38,11 @@ function ReservedListSeller() {
   };
 
   const navigateToReserved = () => {
-    navigate("/seller/reserved");
+    navigate("/seller/dashboard");
   };
 
   return (
     <>
-      <Header />
-
       <PageTitle title={"Produtos Cadastrados"}>
         <div>
           <button className="menuLowRes" onClick={handleOpenDialogMenu}>
@@ -58,7 +63,29 @@ function ReservedListSeller() {
         </FormDialog>
       </PageTitle>
 
-      <Footer />
+      <div className="reservedSellerContainer">
+        <div className="controlBtns">
+          <button className="accountBtn" onClick={handleOpenDialogForm}>
+            <div className="icon">
+              <FaUser />
+            </div>
+            Minha conta
+          </button>
+          <button className="reservedProductsBtn" onClick={navigateToReserved}>
+            <div className="icon">
+              <FaShoppingBasket />
+            </div>
+            <div className="btnText">Meus produtos</div>
+          </button>
+          <FormDialog open={openForm} setOpen={setOpenForm}>
+            <EditSellerForm />
+          </FormDialog>
+        </div>
+
+        <ul className="sellerReservedProductsContainer">
+          {productList.length > 0 && productList.map}
+        </ul>
+      </div>
     </>
   );
 }

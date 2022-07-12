@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import RegisterConsumer from "../components/RegisterConsumer";
 import RegisterSeller from "../components/RegisterSeller";
 import DashboardMercado from "../components/DashboardMercado";
-import ReservedListSeller from "../components/ReservedListSeller";
+import ReservedSeller from "../pages/ReservedSeller";
 
 function Ways() {
   return (
@@ -16,7 +16,7 @@ function Ways() {
         <Route path="consumer/register" element={<RegisterConsumer />} />
         <Route path="seller/register" element={<RegisterSeller />} />
         <Route path="seller/dashboard" element={<DashboardMercado />} />
-        <Route path="seller/reserved" element={<ReservedListSeller />} />
+        <Route path="seller/reserved" element={<ReservedSeller />} />
       </Routes>
     </>
   );
