@@ -38,8 +38,6 @@ function ReservedListSeller({ type }) {
       .catch((err) => console.log(err));
   }, [token, userId, setSellerReservedList]);
 
-  console.log(sellerReservedList);
-
   const userOrders = [];
 
   if (sellerReservedList.length > 0) {
@@ -49,8 +47,6 @@ function ReservedListSeller({ type }) {
     });
 
     const uniqueIds = [...new Set(userArr)];
-    console.log(userArr);
-    console.log(uniqueIds);
 
     uniqueIds.forEach((user) => {
       const userList = [];
@@ -63,8 +59,6 @@ function ReservedListSeller({ type }) {
       userOrders.push(userList);
     });
   }
-
-  console.log(userOrders);
 
   const navigate = useNavigate();
 

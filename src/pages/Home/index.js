@@ -4,17 +4,16 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import ProductList from "../../components/ProductList";
 
-function Home(){
-
-    return(
-        <>
-        <Header/>
-        <Carousel/>
-        <CategList/>
-        <ProductList type="home"/>
-        <Footer/>
-        </>
-    )
+function Home() {
+  return (
+    <>
+      <Header type="home" />
+      <Carousel />
+      <CategList />
+      <ProductList type="home" />
+      <Footer />
+    </>
+  );
 }
 
-export default Home
+export default Home;

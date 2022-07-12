@@ -47,13 +47,15 @@
   top: 0;
 }
 
+@media (max-width: 1200px) {
+  .categoryContainer {
+    height: 230px;
+  }
+}
+
 @media (min-width: 1200px) {
   .categoryList {
-    width: 70vw;
-
-    margin: 30px auto;
-
-    justify-content: space-between;
+    justify-content: center;
     overflow-x: auto;
   }
 }
