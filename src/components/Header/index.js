@@ -45,8 +45,7 @@ function Header() {
           <div className="containerSearch">
             <input
               placeholder="Buscar"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
             />
             <button onClick={() => handleSearch(search)}>
               <IoMdSearch className="iconSearch" />

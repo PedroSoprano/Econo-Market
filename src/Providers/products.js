@@ -9,6 +9,7 @@ export const ProductContext = createContext([]);
 
 export const ProductProvider = ({ children }) => {
   const [productList, setProductList] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([])
 
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
@@ -76,6 +77,8 @@ export const ProductProvider = ({ children }) => {
         addToReserved,
         removeFromReserved,
         setProductList,
+        filteredProducts,
+        setFilteredProducts
       }}
     >
       {children}
