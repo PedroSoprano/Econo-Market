@@ -1,24 +1,24 @@
-// import { useContext } from "react";
+import { useContext } from "react";
 
-// import { ProductsContext } from "../../Providers/ProductsContext"
+import { ProductContext } from "../../Providers/products"
 
 import "./style.css"
 
 function CategList(){
 
-    // const {productList, setFilteredProducts} = useContext(ProductsContext)
+    const {productList, setFilteredProducts} = useContext(ProductContext)
 
     function handleFilter(e){
 
-        // if(e.currentTarget.type === "Todos"){
-        //     setFilteredProducts([])
-        // }else{
-        //     const filterOnProducts = productList.filter((product) => {
-        //             return product.category.toLowerCase() === e.currentTarget.type.toLowerCase()
-        //         })
+        if(e.currentTarget.type === "Todos"){
+            setFilteredProducts([])
+        }else{
+            const filterOnProducts = productList.filter((product) => {
+                    return product.category.toLowerCase() === e.currentTarget.type.toLowerCase()
+                })
             
-        //     setFilteredProducts(filterOnProducts)
-        // }
+            setFilteredProducts(filterOnProducts)
+        }
   
     }
 
