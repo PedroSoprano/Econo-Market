@@ -15,7 +15,7 @@ function Ways() {
         <Route exact path="/dashboard" element={<DashboardMercado />} />
         <Route exact path="consumer/register" element={<RegisterConsumer />} />
         <Route exact path="seller/register" element={<RegisterSeller />} />
-        <Route exact path="/wishlist" element={<WishList />}/>
+        <Route exact path="/wishlist" element={<WishList />} />
       </Routes>
     </>
   );
