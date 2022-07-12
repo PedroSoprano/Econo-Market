@@ -43,9 +43,10 @@ function Login() {
       .catch((err) => LoginFailed(err));
   };
 
-  
   function validateUser() {
-    localStorage.getItem("type") === "consumer" ? navigate("/") : navigate("/dashboard") 
+    localStorage.getItem("type") === "consumer"
+      ? navigate("/")
+      : navigate("/seller/dashboard");
   }
 
   const LoginSuccess = (data) => {
@@ -60,7 +61,9 @@ function Login() {
     });
     localStorage.setItem("token", data.data.accessToken);
     localStorage.setItem("id", data.data.user.id);
-    data.data.user.cnpj === undefined ? localStorage.setItem("type", "consumer") : localStorage.setItem("type", "seller")
+    data.data.user.cnpj === undefined
+      ? localStorage.setItem("type", "consumer")
+      : localStorage.setItem("type", "seller");
     validateUser();
   };
 
