@@ -17,7 +17,7 @@
   }
 
   .registerLogoHeader {
-    margin-top: -30px;
+    
     width: 200px;
   }
 
@@ -249,20 +249,31 @@
 }
 
 @media (min-width: 1130px) {
+
+  .mainContainerLogin{
+    background-color: #f5f5f5;
+  }
+
   .containerLogin {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    gap: 10px;
+    width: 99vw;
+    height: 99vh;
     background-color: #f5f5f5;
+    
   }
+
+  .logoLoginPage{
+    width: 10%;
+  }
+
   .ContainerFormLogin {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
     background-color: #f5f5f5;
   }
 
@@ -342,6 +353,7 @@
     gap: 10px;
   }
 
+
   .ctaRegisterSeller {
     margin-top: 15px;
     font-size: 16px;
@@ -369,7 +381,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 555px;
+    min-width: 500px;
     height: 666px;
     background-color: #fff;
     border: 1px solid #fff;

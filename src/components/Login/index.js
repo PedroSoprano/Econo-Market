@@ -80,8 +80,9 @@ function Login() {
   };
 
   return (
+    <div className="mainContainerLogin">
     <div className="containerLogin">
-      <img src={Logo} alt="Cadastre-se" />
+      <img src={Logo} alt="Cadastre-se" className="logoLoginPage"/>
       <div className="ContainerFormLogin">
         <div className="containerLoginForm">
           <div className="headercontainerLoginForm">
@@ -95,17 +96,14 @@ function Login() {
           >
             <input placeholder="E-mail" {...register("email")} />
             <span className="errorSpan">{errors.email?.message}</span>
-            <div className="passwordContainer">
-              <div className="passwordContainer2">
-                <input
+            <input
                   placeholder="Senha"
                   type="password"
                   {...register("password")}
                 />
                 <span className="errorSpan">{errors.password?.message}</span>
-              </div>
-            </div>
-            <ButtonRegister type="submit" text="Registrar" />
+            
+            <ButtonRegister type="submit" text="Login" />
             <p className="ctaRegisterSeller">
               Não é cadastrado?{" "}
               <Link to="/consumer/register" className="ctaLinkLogin">
@@ -119,6 +117,7 @@ function Login() {
           <img src={TaskImg} alt="Cadastre-se" />
         </div>
       </div>
+    </div>
     </div>
   );
 }
