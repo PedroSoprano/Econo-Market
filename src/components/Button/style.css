@@ -8,3 +8,7 @@
     color: #FFF;
     cursor: pointer;
 }
+
+.btnRegister:hover{
+    background-color: #032b46;
+}
