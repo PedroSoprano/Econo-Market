@@ -5,6 +5,7 @@ import { FaHeart, FaTrashAlt } from "react-icons/fa";
 import { useContext } from "react";
 import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
+import EditProductBtn from "../EditProductButton";
 
 function Product({ type, product }) {
   const { addToWishlist, deleteWishList } = useContext(WishlistContext);
@@ -55,8 +56,10 @@ function Product({ type, product }) {
               : null}
           </div>
         </div>
-
-        {type === "reservedSeller" || type === "reservedConsumer" ? null : (
+        {type === "market-dashboard" && <EditProductBtn product={product} />}
+        {type === "reservedSeller" ||
+        type === "reservedConsumer" ||
+        type === "market-dashboard" ? null : (
           <ReserveButton type={type} product={product} />
         )}
       </div>
