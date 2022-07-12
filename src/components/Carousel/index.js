@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import banner1 from "../../Assets/banners/banner1.svg";
 import banner2 from "../../Assets/banners/banner2.svg";
+// import banner2 from "../../Assets/banners/banner2.svg";
 import banner3 from "../../Assets/banners/banner3.svg";
 
 import "swiper/css";
@@ -26,11 +26,11 @@ function Carousel() {
         modules={[Autoplay, Pagination, Navigation]}
       >
         <SwiperSlide>
-          <img src={banner1} alt="banner1" />
+          <img src={banner2} alt="banner1" />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <img src={banner2} alt="banner2" />
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
           <img src={banner3} alt="banner3" />
         </SwiperSlide>
