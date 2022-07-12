@@ -53,7 +53,7 @@ function ReservedConsumer(){
                     </div>
                     Minha conta
                 </button>
-                <button className="wishlistProductsBtn" onClick={() => navigate("/consumer/wishlist")}>
+                <button className="wishlistProductsBtn" onClick={() => navigate("/wishlist")}>
                     <div className="icon">
                         <FaHeart />
                     </div>
