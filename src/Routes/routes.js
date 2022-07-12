@@ -6,6 +6,7 @@ import RegisterConsumer from "../components/RegisterConsumer";
 import RegisterSeller from "../components/RegisterSeller";
 import DashboardMercado from "../components/DashboardMercado";
 import WishList from "../components/WishList";
+import ReservedConsumer from "../pages/ReservedConsumer";
 
 function Ways() {
   return (
@@ -17,6 +18,8 @@ function Ways() {
         <Route exact path="consumer/register" element={<RegisterConsumer />} />
         <Route exact path="seller/register" element={<RegisterSeller />} />
         <Route exact path="seller/reserved" element={<ReservedSeller />} />
+        <Route exact path="seller/reserved" element={<ReservedSeller />} />
+        <Route exact path="consumer/reserved" element={<ReservedConsumer />} />
         <Route exact path="/wishlist" element={<WishList />} />
       </Routes>
     </>
