@@ -6,6 +6,8 @@ import { ProductContext } from "../../Providers/products";
 import { FaUser, FaBox } from "react-icons/fa";
 
 import Product from "../Product";
+import { useNavigate } from "react-router-dom";
+
 import PageTitle from "../PageTitle";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -17,7 +19,9 @@ import ProductForm from "../ProductForm";
 function DashboardMercado() {
   const { productList } = useContext(ProductContext);
 
-  const userId = 1;
+  const navigate = useNavigate();
+
+  const userId = 2;
   const myProducts = productList.filter((product) => product.userId === userId);
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -36,6 +40,10 @@ function DashboardMercado() {
 
   const handleOpenProductForn = () => {
     setOpenProductForm(true);
+  };
+
+  const navigateToReserved = () => {
+    navigate("/seller/reserved");
   };
 
   return (
@@ -70,7 +78,7 @@ function DashboardMercado() {
             </div>
             Minha conta
           </button>
-          <button className="reservedProductsBtn">
+          <button className="reservedProductsBtn" onClick={navigateToReserved}>
             <div className="icon">
               <FaBox />
             </div>
