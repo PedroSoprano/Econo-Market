@@ -73,10 +73,21 @@ function Header() {
               <div className="modalMenu">
                 {localStorage.getItem("id") ? (
                   <>
-                    <button onClick={() => navigate("/seller/dashboard")}>
+                  {localStorage.getItem('type') === "consumer" ? 
+                  <>
+                    <button onClick={() => navigate("/consumer/dashboard")}>
                       Dashboard
                     </button>
                     <button onClick={logout}>Logout</button>
+                    </> 
+                  :
+                  <>
+                  <button onClick={() => navigate("/seller/dashboard")}>
+                      Dashboard
+                    </button>
+                    <button onClick={logout}>Logout</button>
+                  </> }
+                    
                   </>
                 ) : (
                   <>
