@@ -31,6 +31,7 @@ function Header() {
   function logout() {
     localStorage.clear();
     setUser({});
+    navigate("/")
   }
 
   return (
