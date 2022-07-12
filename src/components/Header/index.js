@@ -1,40 +1,46 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoMdSearch, IoMdPerson } from "react-icons/io";
-
-// import { ProductsContext } from "../../Providers/ProductsContext"
-// import { UserContext } from "../../Providers/UserContext"
+import { IoMdSearch, IoMdPerson, IoIosHeart } from "react-icons/io";
+import { ProductContext } from "../../Providers/products";
+import { UserContext } from "../../Providers/userProvider";
 
 import "./style.css";
 
 function Header() {
   const navigate = useNavigate();
 
-  // const {user, setUser} = useContext(UserContext)
-  // const {productList, setFilteredProducts} = useContext(ProductsContext)
+  const { user, setUser } = useContext(UserContext);
+  const { productList, setFilteredProducts } = useContext(ProductContext);
 
   const [search, setSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   function handleSearch(search) {
-    // const filterOnProducts = productList.filter((product) => {
-    //     return product.name.toLowerCase().includes(search.toLowerCase()) || product.category.toLowerCase().includes(search.toLowerCase())
-    // })
+    const filterOnProducts = productList.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(search.toLowerCase()) ||
+        product.category.toLowerCase().includes(search.toLowerCase())
+      );
+    });
 
-    // setFilteredProducts(filterOnProducts)
+    setFilteredProducts(filterOnProducts);
 
     setSearch("");
   }
 
   function logout() {
     localStorage.clear();
-    // setUser("")
+    setUser({});
   }
 
   return (
     <>
       <header>
-        <img src="https://i.ibb.co/F05Rdfr/economarket-logo.png" alt="logo" />
+        <img
+          src="./economarket-logo.png"
+          alt="logo"
+          onClick={() => navigate("/")}
+        />
         <div className="containerUtilities">
           <div className="containerSearch">
             <input
@@ -46,6 +52,17 @@ function Header() {
               <IoMdSearch className="iconSearch" />
             </button>
           </div>
+          {localStorage.getItem("type") === "consumer" && (
+            <div className="containerPerson">
+              <button
+                className="iconPersonBtn"
+                onClick={() => navigate("/wishlist")}
+              >
+                <IoIosHeart className="iconPerson" />
+              </button>
+            </div>
+          )}
+
           <div className="containerPerson">
             <button
               className="iconPersonBtn"
@@ -55,21 +72,21 @@ function Header() {
             </button>
             {showModal && (
               <div className="modalMenu">
-                {/* {user? ( */}
-                <>
-                  <button onClick={() => navigate("/seller/dashboard")}>
-                    Dashboard
-                  </button>
-                  <button onClick={logout}>Logout</button>
-                </>
-                {/* ) : ( */}
-                <>
-                  <button onClick={() => navigate("/login")}>Login</button>
-                  <button onClick={() => navigate("/consumer/register")}>
-                    Cadastro
-                  </button>
-                </>
-                {/* )} */}
+                {localStorage.getItem("id") ? (
+                  <>
+                    <button onClick={() => navigate("/dashboard")}>
+                      Dashboard
+                    </button>
+                    <button onClick={logout}>Logout</button>
+                  </>
+                ) : (
+                  <>
+                    <button onClick={() => navigate("/login")}>Login</button>
+                    <button onClick={() => navigate("/register")}>
+                      Cadastro
+                    </button>
+                  </>
+                )}
               </div>
             )}
           </div>

@@ -23,6 +23,7 @@
 
     .homeProductsList{
         flex-wrap: wrap;
+        overflow-x: auto;
     }
 
 }
