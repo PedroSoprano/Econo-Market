@@ -59,7 +59,6 @@ function RegisterConsumer () {
     }
 
     const LoginSuccess = (data) => {
-        console.log (data)
         toast.success('Cadastrado com sucesso!', {
             position: "top-right",
             autoClose: 5000,
@@ -69,7 +68,7 @@ function RegisterConsumer () {
             draggable: true,
             progress: undefined,
             });
-        setTimeout(() => {navigate('/')}, 2000)
+        setTimeout(() => {navigate('/login')}, 2000)
     }
 
     const LoginFailed = (data) => {

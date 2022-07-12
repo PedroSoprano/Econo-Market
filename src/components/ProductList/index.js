@@ -11,9 +11,9 @@ import Product from "../Product";
 import "./style.css";
 
 function ProductList({ type }) {
-  const { productList, setProductList } = useContext(ProductContext);
+  const { productList, setProductList, filteredProducts, setFilteredProducts } = useContext(ProductContext);
 
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  // const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     axios
