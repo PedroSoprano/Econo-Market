@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdSearch, IoMdPerson, IoIosHeart } from "react-icons/io";
 import { ProductContext } from "../../Providers/products";
@@ -36,26 +36,32 @@ function Header() {
   return (
     <>
       <header>
-        <img src="./economarket-logo.png" alt="logo" onClick={() => navigate("/")}/>
+        <img
+          src="https://i.ibb.co/F05Rdfr/economarket-logo.png"
+          alt="logo"
+          onClick={() => navigate("/")}
+        />
         <div className="containerUtilities">
           <div className="containerSearch">
             <input
               placeholder="Buscar"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
             />
             <button onClick={() => handleSearch(search)}>
               <IoMdSearch className="iconSearch" />
             </button>
           </div>
-          {localStorage.getItem('type') === "consumer" &&
-          <div className="containerPerson">
-            <button className="iconPersonBtn" onClick={() => navigate("/wishlist")}>
-              <IoIosHeart className="iconPerson"/>
-            </button>
-          </div>
-          }
-          
+          {localStorage.getItem("type") === "consumer" && (
+            <div className="containerPerson">
+              <button
+                className="iconPersonBtn"
+                onClick={() => navigate("/wishlist")}
+              >
+                <IoIosHeart className="iconPerson" />
+              </button>
+            </div>
+          )}
+
           <div className="containerPerson">
             <button
               className="iconPersonBtn"
@@ -65,12 +71,23 @@ function Header() {
             </button>
             {showModal && (
               <div className="modalMenu">
-                {localStorage.getItem('id') ? (
+                {localStorage.getItem("id") ? (
                   <>
-                    <button onClick={() => navigate("/dashboard")}>
+                  {localStorage.getItem('type') === "consumer" ? 
+                  <>
+                    <button onClick={() => navigate("/consumer/dashboard")}>
                       Dashboard
                     </button>
                     <button onClick={logout}>Logout</button>
+                    </> 
+                  :
+                  <>
+                  <button onClick={() => navigate("/seller/dashboard")}>
+                      Dashboard
+                    </button>
+                    <button onClick={logout}>Logout</button>
+                  </> }
+                    
                   </>
                 ) : (
                   <>

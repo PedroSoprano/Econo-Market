@@ -9,16 +9,14 @@ import { UserContext } from "./userProvider";
 export const WishlistContext = createContext([]);
 
 export const WishlistProvider = ({ children }) => {
-
   // const { user } = useContext(UserContext)
   // console.log(user)
-  const [productsWishlist, setProductsWishList] = useState([])
+  const [productsWishlist, setProductsWishList] = useState([]);
 
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
   const token = localStorage.getItem("token");
   const idUser = localStorage.getItem("id");
-  
 
   const notifyErrorNoToken = () =>
     toast.error("Você precisa estar logado para favoritar um produto.");
@@ -28,13 +26,11 @@ export const WishlistProvider = ({ children }) => {
   const notifySuccess = () =>
     toast.success("Produto adicionado à lista de desejos!");
 
-  function deleteSuccess () { 
+  function deleteSuccess() {
     toast.success("Produto removido com sucesso!");
   }
-  
 
   const addToWishlist = (product) => {
-    
     const newObject = {
       id: product.id,
       image: product.image,
@@ -46,8 +42,8 @@ export const WishlistProvider = ({ children }) => {
       promotionalPrice: product.promotionalPrice,
       quantity: product.quantity,
       sellerId: product.userId,
-      userId: parseInt(idUser)
-    }
+      userId: parseInt(idUser),
+    };
 
     if (token === null) {
       notifyErrorNoToken();
@@ -61,8 +57,8 @@ export const WishlistProvider = ({ children }) => {
         .then((response) => notifySuccess())
         .catch((err) => {
           if (err.response.status === 500) {
-            console.log(err)
-            console.log(product.id)
+            console.log(err);
+            console.log(product.id);
             notifyError();
           }
         });
@@ -81,17 +77,26 @@ export const WishlistProvider = ({ children }) => {
   };
 
   const deleteWishList = (id) => {
-    axios.delete(`${base_URL}/wishlist/${id}`,{
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    axios
+      .delete(`${base_URL}/wishlist/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => deleteSuccess())
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   return (
-    <WishlistContext.Provider value={{ addToWishlist, getWishlist, deleteWishList, productsWishlist, setProductsWishList }}>
+    <WishlistContext.Provider
+      value={{
+        addToWishlist,
+        getWishlist,
+        deleteWishList,
+        productsWishlist,
+        setProductsWishList,
+      }}
+    >
       {children}
     </WishlistContext.Provider>
   );

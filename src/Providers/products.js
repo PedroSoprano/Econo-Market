@@ -9,13 +9,14 @@ export const ProductContext = createContext([]);
 
 export const ProductProvider = ({ children }) => {
   const [productList, setProductList] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([])
 
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3NDgyNTY2LCJleHAiOjE2NTc0ODYxNjYsInN1YiI6IjEifQ.a0kPcfMLVfH3OagjxOAr2z8cvXZz0baNgDoKTay_pI0";
+  // const token =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3NDgyNTY2LCJleHAiOjE2NTc0ODYxNjYsInN1YiI6IjEifQ.a0kPcfMLVfH3OagjxOAr2z8cvXZz0baNgDoKTay_pI0";
 
-  // const token = JSON.parse(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
 
   const notifyErrorNoToken = () =>
     toast.error("Você precisa estar logado para reservar um produto.");
@@ -76,6 +77,8 @@ export const ProductProvider = ({ children }) => {
         addToReserved,
         removeFromReserved,
         setProductList,
+        filteredProducts,
+        setFilteredProducts
       }}
     >
       {children}
