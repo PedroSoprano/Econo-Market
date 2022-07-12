@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -10,15 +10,14 @@ export const ReservedProvider = ({ children }) => {
 
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3NDgyNTY2LCJleHAiOjE2NTc0ODYxNjYsInN1YiI6IjEifQ.a0kPcfMLVfH3OagjxOAr2z8cvXZz0baNgDoKTay_pI0";
+  // const token =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNvbnN1bWlkb3JAZ21haWwuY29tIiwiaWF0IjoxNjU3NDgyNTY2LCJleHAiOjE2NTc0ODYxNjYsInN1YiI6IjEifQ.a0kPcfMLVfH3OagjxOAr2z8cvXZz0baNgDoKTay_pI0";
 
-  const userId = 1;
-
-  // const token = JSON.parse(localStorage.getItem("token"));
-  // const userId = JSON.parse(localStorage.getItem("userId"));
+  // const userId = 1;
 
   const userReservedListRequest = () => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("id");
     axios
       .get(`${base_URL}/reserved?userId=${userId}`, {
         headers: {
@@ -29,18 +28,28 @@ export const ReservedProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const sellerReservedListRequest = () => {
-    axios
-      .get(`${base_URL}/reserved?userId=${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setSellerReservedList(response.data))
-      .catch((err) => console.log(err));
-  };
+  // const sellerReservedListRequest = () => {
+  //   const token = localStorage.getItem("token");
+  //   const userId = localStorage.getItem("id");
+  //   axios
+  //     .get(`${base_URL}/reserved?_expand=user&sellerId=${userId}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log("montou");
+  //       return setSellerReservedList(response);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+  // useEffect(() => {
+  //   sellerReservedListRequest();
+  // });
 
   const addToReservedItem = () => {
+    const token = localStorage.getItem("token");
     axios
       .patch(`${base_URL}`, {
         headers: {
@@ -58,7 +67,6 @@ export const ReservedProvider = ({ children }) => {
         addToReservedItem,
         userReservedList,
         setUserReservedList,
-        sellerReservedListRequest,
         sellerReservedList,
         setSellerReservedList,
       }}

@@ -6,7 +6,7 @@ function ReservedSeller() {
   return (
     <>
       <Header />
-      <ReservedListSeller />
+      <ReservedListSeller type="reservedSeller" />
       <Footer />
     </>
   );

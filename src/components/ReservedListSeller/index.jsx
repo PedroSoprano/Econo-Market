@@ -2,7 +2,9 @@ import "./style.css";
 
 import { ProductContext } from "../../Providers/products";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+
+import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 
@@ -13,9 +15,56 @@ import DialogMenu from "../DialogMenu";
 import FormDialog from "../FormDialog";
 import ProductForm from "../ProductForm";
 import EditSellerForm from "../EditSellerForm";
+import SellerReservedItem from "../SellerReservedItem";
+import { ReservedContext } from "../../Providers/reserved";
 
-function ReservedListSeller() {
+function ReservedListSeller({ type }) {
+  const base_URL = "https://ecomarketapi.herokuapp.com";
+
   const { productList } = useContext(ProductContext);
+  const { sellerReservedList, setSellerReservedList } =
+    useContext(ReservedContext);
+
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("id");
+  useEffect(() => {
+    axios
+      .get(`${base_URL}/reserved?_expand=user&sellerId=${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setSellerReservedList(response.data))
+      .catch((err) => console.log(err));
+  }, [token, userId, setSellerReservedList]);
+
+  console.log(sellerReservedList);
+
+  const userOrders = [];
+
+  if (sellerReservedList.length > 0) {
+    const userArr = [];
+    sellerReservedList.forEach((product) => {
+      userArr.push(product.user.id);
+    });
+
+    const uniqueIds = [...new Set(userArr)];
+    console.log(userArr);
+    console.log(uniqueIds);
+
+    uniqueIds.forEach((user) => {
+      const userList = [];
+      sellerReservedList.forEach((product) => {
+        if (product.user.id === user) {
+          userList.push(product);
+        }
+      });
+
+      userOrders.push(userList);
+    });
+  }
+
+  console.log(userOrders);
 
   const navigate = useNavigate();
 
@@ -43,7 +92,7 @@ function ReservedListSeller() {
 
   return (
     <>
-      <PageTitle title={"Produtos Cadastrados"}>
+      <PageTitle title={"Produtos Reservados"}>
         <div>
           <button className="menuLowRes" onClick={handleOpenDialogMenu}>
             +
@@ -83,7 +132,10 @@ function ReservedListSeller() {
         </div>
 
         <ul className="sellerReservedProductsContainer">
-          {productList.length > 0 && productList.map}
+          {userOrders.length > 0 &&
+            userOrders.map((userOrder, index) => (
+              <SellerReservedItem key={index} client={userOrder} type={type} />
+            ))}
         </ul>
       </div>
     </>

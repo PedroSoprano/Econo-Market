@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdSearch, IoMdPerson, IoIosHeart } from "react-icons/io";
 import { ProductContext } from "../../Providers/products";
@@ -37,7 +37,7 @@ function Header() {
     <>
       <header>
         <img
-          src="./economarket-logo.png"
+          src="https://i.ibb.co/F05Rdfr/economarket-logo.png"
           alt="logo"
           onClick={() => navigate("/")}
         />
@@ -74,7 +74,7 @@ function Header() {
               <div className="modalMenu">
                 {localStorage.getItem("id") ? (
                   <>
-                    <button onClick={() => navigate("/dashboard")}>
+                    <button onClick={() => navigate("/seller/dashboard")}>
                       Dashboard
                     </button>
                     <button onClick={logout}>Logout</button>
