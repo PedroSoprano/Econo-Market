@@ -53,7 +53,8 @@
 }
 
 .accountBtn,
-.reservedProductsBtn {
+.reservedProductsBtn,
+.wishlistProductsBtn{
   display: none;
 
   width: 48%;
@@ -108,7 +109,8 @@
   }
 
   .accountBtn,
-  .reservedProductsBtn {
+  .reservedProductsBtn,
+  .wishlistProductsBtn {
     display: flex;
     gap: 20px;
     justify-content: center;
