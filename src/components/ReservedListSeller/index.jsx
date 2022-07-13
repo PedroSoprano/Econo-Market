@@ -121,7 +121,23 @@ function ReservedListSeller({ type }) {
             <EditSellerForm />
           </FormDialog>
         </div>
-
+        <div className="listTitles">
+          <div className="listTitlesClient">
+            Cliente
+          </div>
+          <div className="listTitlesReservedDate">
+            Data da reserva
+          </div>
+          <div className="listTitlesOrderPrice">
+            Valor da reserva
+          </div>
+          <div className="listTitlesOrderGetDate">
+            Retirada
+          </div>
+          <div className="listTitlesOrderTotal">
+            Total de itens
+          </div>
+        </div>
         <ul className="sellerReservedProductsContainer">
           {userOrders.length > 0 &&
             userOrders.map((userOrder, index) => (
