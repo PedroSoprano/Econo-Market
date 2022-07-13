@@ -3,12 +3,16 @@ import "./style.css";
 import { useContext, useState } from "react";
 import { ProductContext } from "../../Providers/products";
 import { ReservedContext } from "../../Providers/reserved";
+import { useEffect } from "react";
 
 function ReserveButton({ product, type }) {
   const { addToReserved, removeFromReserved } = useContext(ProductContext);
-  const { userReservedList } = useContext(ReservedContext);
+  const { userReservedList, userReservedListRequest } =
+    useContext(ReservedContext);
 
-  const [quantity, setQuantity] = useState(0);
+  useEffect(() => {
+    userReservedListRequest();
+  });
 
   const checkReservedList = () => {
     const filterReservedProduct = userReservedList.filter(
@@ -22,27 +26,6 @@ function ReserveButton({ product, type }) {
     }
   };
 
-  const handleAddProduct = () => {
-    const filterReservedProduct = userReservedList.filter(
-      (reservedProduct) => reservedProduct.id === product.id
-    );
-
-    if (filterReservedProduct.length === 0) {
-      addToReserved(product);
-    }
-    setQuantity(quantity + 1);
-  };
-
-  const handleRemoveProduct = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    } else if (quantity === 0) {
-      setQuantity(quantity);
-    } else {
-      setQuantity(quantity - 1);
-      removeFromReserved(product.id);
-    }
-  };
   return (
     <div className="reserveBtn">
       {type === "market-dashboard" && (

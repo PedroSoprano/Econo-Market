@@ -35,8 +35,6 @@ export const ReservedProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  userReservedListRequest();
-
   // const sellerReservedListRequest = () => {
   //   const token = localStorage.getItem("token");
   //   const userId = localStorage.getItem("id");
