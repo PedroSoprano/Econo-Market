@@ -41,9 +41,9 @@ function ProductForm() {
     originalPrice: yup.string().required("Digite um valor inicial"),
     promotionalPrice: yup.string().required("Digite um valor atual"),
     quantity: yup.string().required("Digite a quantidade"),
-    dueDate: yup.string().required("Digite a data de vencimento do produto"),
+    dueDate: yup.string().required("Digite a data de vencimento do produto").matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
     category: yup.string().required("Digite uma categoria"),
-    getDate: yup.string().required("Digite uma data de retirada"),
+    getDate: yup.string().required("Digite uma data de retirada").matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
   });
 
   const {
