@@ -1,7 +1,5 @@
 import "./style.css";
 
-import { ProductContext } from "../../Providers/products";
-
 import { useState, useContext, useEffect } from "react";
 
 import axios from "axios";
@@ -21,7 +19,6 @@ import { ReservedContext } from "../../Providers/reserved";
 function ReservedListSeller({ type }) {
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
-  const { productList } = useContext(ProductContext);
   const { sellerReservedList, setSellerReservedList } =
     useContext(ReservedContext);
 
@@ -38,8 +35,6 @@ function ReservedListSeller({ type }) {
       .catch((err) => console.log(err));
   }, [token, userId, setSellerReservedList]);
 
-  console.log(sellerReservedList);
-
   const userOrders = [];
 
   if (sellerReservedList.length > 0) {
@@ -49,8 +44,6 @@ function ReservedListSeller({ type }) {
     });
 
     const uniqueIds = [...new Set(userArr)];
-    console.log(userArr);
-    console.log(uniqueIds);
 
     uniqueIds.forEach((user) => {
       const userList = [];
@@ -63,8 +56,6 @@ function ReservedListSeller({ type }) {
       userOrders.push(userList);
     });
   }
-
-  console.log(userOrders);
 
   const navigate = useNavigate();
 
