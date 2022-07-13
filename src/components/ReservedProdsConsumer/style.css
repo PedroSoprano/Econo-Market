@@ -1,40 +1,39 @@
+.containerReservedProdsConsumerList {
+  width: 100%;
+  padding: 12px;
+  padding-right: 0;
 
-.containerReservedProdsConsumerList{
-    width: 100%;
-    padding: 12px;
-    padding-right: 0;
-
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
-.ReservedProdsConsumerList{
-    padding: 0;
-    padding-right: 12px;
+.ReservedProdsConsumerList {
+  padding: 0;
+  padding-right: 12px;
 
-    list-style: none;    
+  list-style: none;
 
-    display: flex;
-    overflow-x: auto;
-    gap: 25px;
+  display: flex;
+  overflow-x: auto;
+  gap: 25px;
 }
 
-.noItemReserved{
-    width: 100%;
-    height: 100px;
+.noItemReserved {
+  width: 100%;
+  height: 100px;
 
-    margin-top: 130px;
-    margin-bottom: 70px;
-    text-align: center;
-    font-size: 18px;
+  margin-top: 130px;
+  margin-bottom: 70px;
+  text-align: center;
+  font-size: 18px;
 }
 
-@media (min-width:800px){
-    .containerReservedProdsConsumerList{
-        max-width: 1330px;
-        margin: auto;
-    }
+@media (min-width: 800px) {
+  .containerReservedProdsConsumerList {
+    max-width: 1330px;
+    margin: auto;
+  }
 
-    .ReservedProdsConsumerList{
-        flex-wrap: wrap;
-    }
+  .ReservedProdsConsumerList {
+    flex-wrap: wrap;
+  }
 }

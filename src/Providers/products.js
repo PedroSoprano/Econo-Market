@@ -9,7 +9,7 @@ export const ProductContext = createContext([]);
 
 export const ProductProvider = ({ children }) => {
   const [productList, setProductList] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
@@ -26,6 +26,8 @@ export const ProductProvider = ({ children }) => {
   const notifyRemoved = () =>
     toast.warning("Produto removido da lista de reservados.");
 
+  const notifyReserved = () => toast.warning("O produto já foi reservado.");
+
   const productsRequest = () => {
     axios
       .get(`${base_URL}/products`)
@@ -34,11 +36,28 @@ export const ProductProvider = ({ children }) => {
   };
 
   const addToReserved = (product) => {
+    const idUser = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+
+    const newObject = {
+      image: product.image,
+      name: product.name,
+      dueDate: product.dueDate,
+      category: product.category,
+      description: product.description,
+      originalPrice: product.originalPrice,
+      promotionalPrice: product.promotionalPrice,
+      quantity: product.quantity,
+      sellerId: product.userId,
+      userId: parseInt(idUser),
+      id: product.id,
+    };
+
     if (token === null) {
       notifyErrorNoToken();
     } else {
       axios
-        .post(`${base_URL}/reserved`, product, {
+        .post(`${base_URL}/reserved`, newObject, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -47,7 +66,10 @@ export const ProductProvider = ({ children }) => {
           notifySuccess();
           return response;
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          notifyReserved();
+        });
     }
   };
 
@@ -78,7 +100,7 @@ export const ProductProvider = ({ children }) => {
         removeFromReserved,
         setProductList,
         filteredProducts,
-        setFilteredProducts
+        setFilteredProducts,
       }}
     >
       {children}
