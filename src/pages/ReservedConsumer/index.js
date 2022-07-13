@@ -24,36 +24,9 @@ function ReservedConsumer() {
     setOpenMenu(true);
   };
 
-<<<<<<< HEAD
-                    <DialogMenu
-                        open={openMenu}
-                        setOpen={setOpenMenu}
-                        menuList={menuList}
-                    />
-                </div>
-            </PageTitle>
-            <div className="controlBtns">
-                <button className="accountBtn" onClick={handleOpenDialogForm}>
-                    <div className="icon">
-                        <FaUser />
-                    </div>
-                    Minha conta
-                </button>
-                <button className="wishlistProductsBtn" onClick={() => navigate("/wishlist")}>
-                    <div className="icon">
-                        <FaHeart />
-                    </div>
-                    <div className="btnText">Wishlist</div>
-                </button>
-                <FormDialog open={openForm} setOpen={setOpenForm}>
-                    <EditConsumerForm />
-                </FormDialog>
-            </div>
-=======
   const handleOpenDialogForm = () => {
     setOpenForm(true);
   };
->>>>>>> 4475c78d17731f6183649aef031676b8e88f8193
 
   return (
     <>
