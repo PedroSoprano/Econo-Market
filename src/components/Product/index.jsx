@@ -6,9 +6,11 @@ import { useContext } from "react";
 import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
 import EditProductBtn from "../EditProductButton";
+import { ReservedContext } from "../../Providers/reserved";
 
 function Product({ type, product }) {
   const { addToWishlist, deleteWishList } = useContext(WishlistContext);
+  const { handleDeleteReserved } = useContext(ReservedContext);
 
   const consumerType = localStorage.getItem("type");
 
@@ -63,6 +65,20 @@ function Product({ type, product }) {
               ? type === "wishlist" && (
                   <FaTrashAlt
                     onClick={() => handleDeleteWishlist(product.id)}
+                  />
+                )
+              : null}
+            {product
+              ? type === "reservedSeller" && (
+                  <FaTrashAlt
+                    onClick={() => handleDeleteReserved(product.id)}
+                  />
+                )
+              : null}
+            {product
+              ? type === "reservedConsumer" && (
+                  <FaTrashAlt
+                    onClick={() => handleDeleteReserved(product.id)}
                   />
                 )
               : null}
