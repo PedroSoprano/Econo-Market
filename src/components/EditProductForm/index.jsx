@@ -17,9 +17,9 @@ function EditProductForm({ product }) {
 
   const notifySuccess = () => toast.success("Produto editado com sucesso!");
 
-  const addProduct = (product) => {
+  const editProductData = (data, productId) => {
     axios
-      .post(`${base_URL}/products`, product, {
+      .patch(`${base_URL}/products/${productId}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,9 +36,9 @@ function EditProductForm({ product }) {
       .max(30, "Máximo de 30 caracteres!"),
     image: yup.string().required("Insira a url da imagem do produto"),
     description: yup.string().required("Insira a descrição do produto"),
-    originalPrice: yup.string().required("Digite um valor inicial"),
-    promotionalPrice: yup.string().required("Digite um valor atual"),
-    quantity: yup.string().required("Digite a quantidade"),
+    originalPrice: yup.number().required("Digite um valor inicial"),
+    promotionalPrice: yup.number().required("Digite um valor atual"),
+    quantity: yup.number().required("Digite a quantidade"),
     dueDate: yup.string().required("Digite a data de vencimento do produto"),
     category: yup.string().required("Digite uma categoria"),
     getDate: yup.string().required("Digite uma data de retirada"),
@@ -50,21 +50,19 @@ function EditProductForm({ product }) {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const handleRegisterProduct = (data) => {
+  const handleEditProduct = (data) => {
     const id = localStorage.getItem("id");
-    const sellerId = parseInt(id);
+    const userId = parseInt(id);
+    const productId = product.id;
 
-    data.userId = sellerId;
-    console.log(data);
+    data.id = productId;
+    data.userId = userId;
 
-    addProduct(data);
+    editProductData(data, productId);
   };
 
   return (
-    <form
-      className="editSellerForm"
-      onSubmit={handleSubmit(handleRegisterProduct)}
-    >
+    <form className="editSellerForm" onSubmit={handleSubmit(handleEditProduct)}>
       <div className="formTitle">Editar Produto</div>
 
       <div className="formGroup">

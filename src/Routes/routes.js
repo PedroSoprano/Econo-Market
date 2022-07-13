@@ -21,7 +21,6 @@ function Ways() {
         <Route exact path="/wishlist" element={<WishList />} />
         <Route exact path="/editarform" element={<EditConsumerForm />} />
         <Route exact path="seller/reserved" element={<ReservedSeller />} />
-        <Route exact path="seller/reserved" element={<ReservedSeller />} />
         <Route exact path="consumer/reserved" element={<ReservedConsumer />} />
         <Route exact path="/wishlist" element={<WishList />} />
       </Routes>

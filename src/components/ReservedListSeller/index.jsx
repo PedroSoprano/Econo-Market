@@ -1,7 +1,5 @@
 import "./style.css";
 
-import { ProductContext } from "../../Providers/products";
-
 import { useState, useContext, useEffect } from "react";
 
 import axios from "axios";
@@ -11,17 +9,16 @@ import { useNavigate } from "react-router-dom";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
 
 import PageTitle from "../PageTitle";
-import DialogMenu from "../DialogMenu";
 import FormDialog from "../FormDialog";
 import ProductForm from "../ProductForm";
 import EditSellerForm from "../EditSellerForm";
 import SellerReservedItem from "../SellerReservedItem";
 import { ReservedContext } from "../../Providers/reserved";
+import SellerDashboardMenu from "../SellerDashboardMenu";
 
 function ReservedListSeller({ type }) {
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
-  const { productList } = useContext(ProductContext);
   const { sellerReservedList, setSellerReservedList } =
     useContext(ReservedContext);
 
@@ -38,8 +35,6 @@ function ReservedListSeller({ type }) {
       .catch((err) => console.log(err));
   }, [token, userId, setSellerReservedList]);
 
-  console.log(sellerReservedList);
-
   const userOrders = [];
 
   if (sellerReservedList.length > 0) {
@@ -49,8 +44,6 @@ function ReservedListSeller({ type }) {
     });
 
     const uniqueIds = [...new Set(userArr)];
-    console.log(userArr);
-    console.log(uniqueIds);
 
     uniqueIds.forEach((user) => {
       const userList = [];
@@ -63,8 +56,6 @@ function ReservedListSeller({ type }) {
       userOrders.push(userList);
     });
   }
-
-  console.log(userOrders);
 
   const navigate = useNavigate();
 
@@ -86,7 +77,7 @@ function ReservedListSeller({ type }) {
     setOpenProductForm(true);
   };
 
-  const navigateToReserved = () => {
+  const navigateToDashboard = () => {
     navigate("/seller/dashboard");
   };
 
@@ -98,7 +89,7 @@ function ReservedListSeller({ type }) {
             +
           </button>
 
-          <DialogMenu
+          <SellerDashboardMenu
             open={openMenu}
             setOpen={setOpenMenu}
             menuList={menuList}
@@ -120,7 +111,7 @@ function ReservedListSeller({ type }) {
             </div>
             Minha conta
           </button>
-          <button className="reservedProductsBtn" onClick={navigateToReserved}>
+          <button className="reservedProductsBtn" onClick={navigateToDashboard}>
             <div className="icon">
               <FaShoppingBasket />
             </div>

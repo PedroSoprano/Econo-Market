@@ -10,7 +10,6 @@ function EditProductBtn({ product }) {
 
   const handleOpenEditForm = () => {
     setOpen(true);
-    console.log(product);
   };
 
   return (
