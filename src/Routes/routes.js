@@ -9,6 +9,7 @@ import WishList from "../components/WishList";
 import EditConsumerForm from "../components/EditConsumerForm";
 import ReservedConsumer from "../pages/ReservedConsumer";
 import DashboarUsuario from "../components/DashboardConsumidor";
+import ProductPage from "../pages/ProductPage/ProductPage";
 
 function Ways() {
   return (
@@ -25,6 +26,7 @@ function Ways() {
         <Route exact path="seller/reserved" element={<ReservedSeller />} />
         <Route exact path="consumer/reserved" element={<ReservedConsumer />} />
         <Route exact path="/wishlist" element={<WishList />} />
+        <Route exact path="/products/:id" element={<ProductPage/>} />
       </Routes>
     </>
   );
