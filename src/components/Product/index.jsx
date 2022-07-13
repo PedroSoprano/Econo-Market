@@ -1,15 +1,20 @@
 import "./style.css";
 
+import { useNavigate } from "react-router-dom";
+
 import { FaHeart, FaTrashAlt } from "react-icons/fa";
 
 import { useContext } from "react";
 import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
+import EditProductBtn from "../EditProductButton";
 import { ReservedContext } from "../../Providers/reserved";
 
 function Product({ type, product }) {
   const { addToWishlist, deleteWishList } = useContext(WishlistContext);
   const { handleDeleteReserved } = useContext(ReservedContext);
+
+  const navigate = useNavigate();
 
   const consumerType = localStorage.getItem("type");
 
@@ -31,13 +36,19 @@ function Product({ type, product }) {
     deleteWishList(id);
   };
 
+  const navigateProductPage = () => {
+    navigate(`/products/${product.id}`);
+  };
+
   return (
     <li className="productContainer">
-      <div className="productImgContainer">
+      <div className="productImgContainer" onClick={navigateProductPage}>
         <img className="productImg" src={product.image} alt={product.name} />
       </div>
       <div className="productInfo">
-        <h3 className="productTitle">{product.name}</h3>
+        <h3 className="productTitle" onClick={navigateProductPage}>
+          {product.name}
+        </h3>
         <div className="productDueDate">Vencimento: {product.dueDate}</div>
 
         <div className="priceWishlist">
@@ -83,10 +94,11 @@ function Product({ type, product }) {
               : null}
           </div>
         </div>
-
-        {type === "reservedSeller" ||
-        type === "reservedConsumer" ||
-        (consumerType === "seller" && type === "home") ? null : (
+        {type === "market-dashboard" ? (
+          <EditProductBtn product={product} />
+        ) : type === "reservedSeller" ||
+          type === "reservedConsumer" ||
+          (consumerType === "seller" && type === "home") ? null : (
           <ReserveButton type={type} product={product} />
         )}
       </div>
