@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import PageTitle from "../PageTitle";
 import Header from "../Header";
 import Footer from "../Footer";
-import DialogMenu from "../DialogMenu";
+import SellerDashboardMenu from "../SellerDashboardMenu";
 import FormDialog from "../FormDialog";
 import EditSellerForm from "../EditSellerForm";
 import ProductForm from "../ProductForm";
@@ -56,7 +56,7 @@ function DashboardMercado() {
             +
           </button>
 
-          <DialogMenu
+          <SellerDashboardMenu
             open={openMenu}
             setOpen={setOpenMenu}
             menuList={menuList}

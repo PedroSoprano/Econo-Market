@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { FaUser, FaShoppingBasket } from "react-icons/fa";
 
 import PageTitle from "../PageTitle";
-import DialogMenu from "../DialogMenu";
 import FormDialog from "../FormDialog";
 import ProductForm from "../ProductForm";
 import EditSellerForm from "../EditSellerForm";
 import SellerReservedItem from "../SellerReservedItem";
 import { ReservedContext } from "../../Providers/reserved";
+import SellerDashboardMenu from "../SellerDashboardMenu";
 
 function ReservedListSeller({ type }) {
   const base_URL = "https://ecomarketapi.herokuapp.com";
@@ -77,7 +77,7 @@ function ReservedListSeller({ type }) {
     setOpenProductForm(true);
   };
 
-  const navigateToReserved = () => {
+  const navigateToDashboard = () => {
     navigate("/seller/dashboard");
   };
 
@@ -89,7 +89,7 @@ function ReservedListSeller({ type }) {
             +
           </button>
 
-          <DialogMenu
+          <SellerDashboardMenu
             open={openMenu}
             setOpen={setOpenMenu}
             menuList={menuList}
@@ -111,7 +111,7 @@ function ReservedListSeller({ type }) {
             </div>
             Minha conta
           </button>
-          <button className="reservedProductsBtn" onClick={navigateToReserved}>
+          <button className="reservedProductsBtn" onClick={navigateToDashboard}>
             <div className="icon">
               <FaShoppingBasket />
             </div>

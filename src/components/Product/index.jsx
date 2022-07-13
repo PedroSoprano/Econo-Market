@@ -5,6 +5,7 @@ import { FaHeart, FaTrashAlt } from "react-icons/fa";
 import { useContext } from "react";
 import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
+import EditProductBtn from "../EditProductButton";
 import { ReservedContext } from "../../Providers/reserved";
 
 function Product({ type, product }) {
@@ -83,10 +84,11 @@ function Product({ type, product }) {
               : null}
           </div>
         </div>
-
-        {type === "reservedSeller" ||
-        type === "reservedConsumer" ||
-        (consumerType === "seller" && type === "home") ? null : (
+        {type === "market-dashboard" ? (
+          <EditProductBtn product={product} />
+        ) : type === "reservedSeller" ||
+          type === "reservedConsumer" ||
+          (consumerType === "seller" && type === "home") ? null : (
           <ReserveButton type={type} product={product} />
         )}
       </div>
