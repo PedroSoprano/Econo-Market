@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import DialogMenu from "../../components/DialogMenu";
 import FormDialog from "../../components/FormDialog";
 import ReservedProdsConsumer from "../../components/ReservedProdsConsumer";
-// import EditConsumerForm from "../../components/EditConsumerForm";
+import EditConsumerForm from "../../components/EditConsumerForm";
 
 import { FaUser, FaHeart } from "react-icons/fa";
 import { useState } from "react";
@@ -60,7 +60,7 @@ function ReservedConsumer(){
                     <div className="btnText">Wishlist</div>
                 </button>
                 <FormDialog open={openForm} setOpen={setOpenForm}>
-                    {/* <EditConsumerForm /> */}
+                    <EditConsumerForm />
                 </FormDialog>
             </div>
 
