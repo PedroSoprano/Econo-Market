@@ -96,7 +96,7 @@ function Header({ type }) {
                 ) : (
                   <>
                     <button onClick={() => navigate("/login")}>Login</button>
-                    <button onClick={() => navigate("/register")}>
+                    <button onClick={() => navigate("consumer/register")}>
                       Cadastro
                     </button>
                   </>
