@@ -68,11 +68,11 @@ function Product({ type, product }) {
               : null}
           </div>
         </div>
-        {type === "market-dashboard" && <EditProductBtn product={product} />}
-
-        {type === "reservedSeller" ||
-        type === "reservedConsumer" ||
-        (consumerType === "seller" && type === "home") ? null : (
+        {type === "market-dashboard" ? (
+          <EditProductBtn product={product} />
+        ) : type === "reservedSeller" ||
+          type === "reservedConsumer" ||
+          (consumerType === "seller" && type === "home") ? null : (
           <ReserveButton type={type} product={product} />
         )}
       </div>
