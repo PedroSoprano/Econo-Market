@@ -6,9 +6,95 @@
   margin-bottom: 30px;
 }
 
+.listTitles{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 5px;
+}
+
+.listTitles {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.listTitlesClient{
+  width: 33%;
+  text-align: left;
+}
+
+.listTitlesReservedDate{
+  width: 15%;
+  text-align: right;
+}
+
+.listTitlesOrderPrice{
+  width: 15%;
+  text-align: center;
+}
+
+.listTitlesOrderGetDate{
+  width: 15%;
+  text-align: left;
+}
+
+.listTitlesOrderTotal{
+  width: 15%;
+  text-align: left;
+}
+
+
+
 @media screen and (min-width: 770px) {
   .reservedSellerContainer {
     width: 70vw;
     margin-top: 30px;
   }
+
+
+  .listTitles{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 5px;
+  }
+
+  .listTitles {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .listTitlesClient{
+    width: 33%;
+    text-align: left;
+  }
+
+  .listTitlesReservedDate{
+    width: 15%;
+    text-align: center;
+  }
+
+  .listTitlesOrderPrice{
+    width: 15%;
+    text-align: center;
+  }
+
+  .listTitlesOrderGetDate{
+    width: 15%;
+    text-align: left;
+  }
+
+  .listTitlesOrderTotal{
+    width: 15%;
+    text-align: left;
+  }
+
+
+
 }
