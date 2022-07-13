@@ -22,7 +22,7 @@ function ReservedProdsConsumer({ type }) {
         setReservedProducts(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  });
 
   return (
     <section className="containerReservedProdsConsumerList">
