@@ -47,12 +47,30 @@
   top: 0;
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
+  .categoryContainer {
+    height: 230px;
+  }
+}
+
+@media (max-width: 1699px) {
+  .categoryList {
+    width: 90vw;
+    height: auto;
+
+    margin: 0 auto;
+
+    justify-content: space-between;
+
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 1700px) {
   .categoryList {
     width: 70vw;
 
-    margin: 30px auto;
-
+    margin: 0 auto;
     justify-content: space-between;
     overflow-x: auto;
   }

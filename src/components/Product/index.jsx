@@ -1,13 +1,22 @@
 import "./style.css";
 
+import { useNavigate } from "react-router-dom";
+
 import { FaHeart, FaTrashAlt } from "react-icons/fa";
 
 import { useContext } from "react";
 import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
+import EditProductBtn from "../EditProductButton";
+import { ReservedContext } from "../../Providers/reserved";
 
 function Product({ type, product }) {
   const { addToWishlist, deleteWishList } = useContext(WishlistContext);
+  const { handleDeleteReserved } = useContext(ReservedContext);
+
+  const navigate = useNavigate();
+
+  const consumerType = localStorage.getItem("type");
 
   const formatedOriginalPrice = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -27,24 +36,40 @@ function Product({ type, product }) {
     deleteWishList(id);
   };
 
+  const navigateProductPage = () => {
+    navigate(`/products/${product.id}`);
+  };
+
   return (
     <li className="productContainer">
-      <div className="productImgContainer">
+      <div className="productImgContainer" onClick={navigateProductPage}>
         <img className="productImg" src={product.image} alt={product.name} />
       </div>
       <div className="productInfo">
-        <h3 className="productTitle">{product.name}</h3>
-        <div className="productDueDate">{product.dueDate}</div>
+        <h3 className="productTitle" onClick={navigateProductPage}>
+          {product.name}
+        </h3>
+        <div className="productDueDate">Vencimento: {product.dueDate}</div>
 
         <div className="priceWishlist">
-          <div className="productPrices">
-            <div className="pastPrice">{formatedOriginalPrice}</div>
-            <div className="currentprice">{formatedPromotionalPrice}</div>
-          </div>
+          {type === "reservedSeller" || type === "reservedConsumer" ? (
+            <div className="productPricesReserved">
+              <div className="pastPrice">{formatedOriginalPrice}</div>
+              <div className="currentprice">{formatedPromotionalPrice}</div>
+            </div>
+          ) : (
+            <div className="productPrices">
+              <div className="pastPrice">{formatedOriginalPrice}</div>
+              <div className="currentprice">{formatedPromotionalPrice}</div>
+            </div>
+          )}
 
           <div className="wishlistBtn">
             {product
-              ? type === "home" && <FaHeart onClick={handleAddWishlist} />
+              ? type === "home" &&
+                consumerType !== "seller" && (
+                  <FaHeart onClick={handleAddWishlist} />
+                )
               : null}
             {product
               ? type === "wishlist" && (
@@ -53,10 +78,27 @@ function Product({ type, product }) {
                   />
                 )
               : null}
+            {product
+              ? type === "reservedSeller" && (
+                  <FaTrashAlt
+                    onClick={() => handleDeleteReserved(product.id)}
+                  />
+                )
+              : null}
+            {product
+              ? type === "reservedConsumer" && (
+                  <FaTrashAlt
+                    onClick={() => handleDeleteReserved(product.id)}
+                  />
+                )
+              : null}
           </div>
         </div>
-
-        {type === "reservedSeller" || type === "reservedConsumer" ? null : (
+        {type === "market-dashboard" ? (
+          <EditProductBtn product={product} />
+        ) : type === "reservedSeller" ||
+          type === "reservedConsumer" ||
+          (consumerType === "seller" && type === "home") ? null : (
           <ReserveButton type={type} product={product} />
         )}
       </div>

@@ -28,7 +28,7 @@ function DashboarUsuario() {
 
       <PageTitle title={"Painel do Usuario"}/>       
 
-      <div className="dashboardMarket">
+      <div className="dashboardConsumidor">
         <div className="controlBtns">
           <button  className="btnNavigate" onClick={handleOpenDialogForm}>
             <div className="icon">

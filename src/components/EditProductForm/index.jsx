@@ -1,5 +1,3 @@
-import "./style.css";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -9,19 +7,19 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-function ProductForm() {
+function EditProductForm({ product }) {
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
   const token = localStorage.getItem("token");
 
   const notifyError = () =>
-    toast.error("Produto não cadastrado. Tente novamente.");
+    toast.error("Produto não editado. Tente novamente.");
 
-  const notifySuccess = () => toast.success("Produto cadastrado com sucesso!");
+  const notifySuccess = () => toast.success("Produto editado com sucesso!");
 
-  const addProduct = (product) => {
+  const editProductData = (data, productId) => {
     axios
-      .post(`${base_URL}/products`, product, {
+      .patch(`${base_URL}/products/${productId}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,51 +36,34 @@ function ProductForm() {
       .max(30, "Máximo de 30 caracteres!"),
     image: yup.string().required("Insira a url da imagem do produto"),
     description: yup.string().required("Insira a descrição do produto"),
-    originalPrice: yup.string().required("Digite um valor inicial"),
-    promotionalPrice: yup.string().required("Digite um valor atual"),
-    quantity: yup.string().required("Digite a quantidade"),
-    dueDate: yup.string().required("Digite a data de vencimento do produto").matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
+    originalPrice: yup.number().required("Digite um valor inicial"),
+    promotionalPrice: yup.number().required("Digite um valor atual"),
+    quantity: yup.number().required("Digite a quantidade"),
+    dueDate: yup.string().required("Digite a data de vencimento do produto"),
     category: yup.string().required("Digite uma categoria"),
-    getDate: yup.string().required("Digite uma data de retirada").matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
+    getDate: yup.string().required("Digite uma data de retirada"),
   });
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const handleRegisterProduct = (data) => {
-    // data.preventDefault();
-
+  const handleEditProduct = (data) => {
     const id = localStorage.getItem("id");
-    const sellerId = parseInt(id);
+    const userId = parseInt(id);
+    const productId = product.id;
 
-    data.userId = sellerId;
-    console.log(data);
+    data.id = productId;
+    data.userId = userId;
 
-    addProduct(data);
-
-    reset({
-      name: "",
-      image: "",
-      description: "",
-      originalPrice: "",
-      promotionalPrice: "",
-      quantity: "",
-      dueDate: "",
-      category: "",
-      getDate: "",
-    });
+    editProductData(data, productId);
   };
 
   return (
-    <form
-      className="editSellerForm"
-      onSubmit={handleSubmit(handleRegisterProduct)}
-    >
-      <div className="formTitle">Cadastrar Produto</div>
+    <form className="editSellerForm" onSubmit={handleSubmit(handleEditProduct)}>
+      <div className="formTitle">Editar Produto</div>
 
       <div className="formGroup">
         <label className="editFormLabel">Nome do produto</label>
@@ -90,6 +71,7 @@ function ProductForm() {
           className="editFormInput"
           id="name"
           type="text"
+          defaultValue={product.name}
           {...register("name")}
         />
         <div className="formErrors">{errors.name?.message}</div>
@@ -101,6 +83,7 @@ function ProductForm() {
           className="editFormInput"
           id="url"
           type="text"
+          defaultValue={product.image}
           {...register("image")}
         />
         <div className="formErrors">{errors.image?.message}</div>
@@ -112,6 +95,7 @@ function ProductForm() {
           className="editFormInput"
           id="descricao"
           type="text"
+          defaultValue={product.description}
           {...register("description")}
         />
         <div className="formErrors">{errors.description?.message}</div>
@@ -124,6 +108,7 @@ function ProductForm() {
             className="editFormInputSmall"
             id="precoOriginal"
             type="number"
+            defaultValue={product.originalPrice}
             {...register("originalPrice")}
           />
           <div className="formErrors">{errors.originalPrice?.message}</div>
@@ -135,6 +120,7 @@ function ProductForm() {
             className="editFormInputSmall"
             id="precoAtual"
             type="number"
+            defaultValue={product.promotionalPrice}
             {...register("promotionalPrice")}
           />
           <div className="formErrors">{errors.promotionalPrice?.message}</div>
@@ -148,6 +134,7 @@ function ProductForm() {
             className="editFormInputSmall"
             id="estoque"
             type="number"
+            defaultValue={product.quantity}
             {...register("quantity")}
           />
           <div className="formErrors">{errors.quantity?.message}</div>
@@ -158,6 +145,7 @@ function ProductForm() {
             className="editFormInputSmall"
             id="vencimento"
             type="text"
+            defaultValue={product.dueDate}
             {...register("dueDate")}
           />
           <div className="formErrors">{errors.dueDate?.message}</div>
@@ -171,6 +159,7 @@ function ProductForm() {
             className="editFormInputSmall"
             id="categoria"
             type="text"
+            defaultValue={product.category}
             {...register("category")}
           />
           <div className="formErrors">{errors.category?.message}</div>
@@ -181,15 +170,16 @@ function ProductForm() {
             className="editFormInputSmall"
             id="retirada"
             type="text"
+            defaultValue={product.getDate}
             {...register("getDate")}
           />
           <div className="formErrors">{errors.getDate?.message}</div>
         </div>
       </div>
 
-      <button className="saveEditBtn">Cadastrar</button>
+      <button className="saveEditBtn">Editar</button>
     </form>
   );
 }
 
-export default ProductForm;
+export default EditProductForm;

@@ -9,6 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Product from "../Product";
 
 function SellerReservedItem({ client, type }) {
+  console.log(client);
   return (
     <li className="reservedItem">
       <Accordion style={{ boxShadow: "none" }}>
