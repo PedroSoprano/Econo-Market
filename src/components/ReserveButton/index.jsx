@@ -11,8 +11,6 @@ function ReserveButton({ product, type }) {
   const [quantity, setQuantity] = useState(0);
 
   const handleAddProduct = () => {
-    console.log(userReservedList);
-
     const filterReservedProduct = userReservedList.filter(
       (reservedProduct) => reservedProduct.id === product.id
     );
@@ -35,6 +33,11 @@ function ReserveButton({ product, type }) {
   };
   return (
     <div className="reserveBtn">
+      {type === "market-dashboard" && (
+        <>
+          <div className="editBtn">Editar</div>
+        </>
+      )}
       {type === "home" && (
         <>
           <button className="removeBtn" onClick={handleRemoveProduct}>

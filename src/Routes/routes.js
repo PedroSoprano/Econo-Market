@@ -8,6 +8,7 @@ import DashboardMercado from "../components/DashboardMercado";
 import WishList from "../components/WishList";
 import EditConsumerForm from "../components/EditConsumerForm";
 import ReservedConsumer from "../pages/ReservedConsumer";
+import DashboarUsuario from "../components/DashboardConsumidor";
 
 function Ways() {
   return (
@@ -17,6 +18,7 @@ function Ways() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="seller/dashboard" element={<DashboardMercado />} />
         <Route exact path="consumer/register" element={<RegisterConsumer />} />
+        <Route exact path="consumer/dashboard" element={<DashboarUsuario />} />
         <Route exact path="seller/register" element={<RegisterSeller />} />
         <Route exact path="/wishlist" element={<WishList />} />
         <Route exact path="/editarform" element={<EditConsumerForm />} />

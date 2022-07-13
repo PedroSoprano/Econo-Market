@@ -10,6 +10,8 @@ import EditProductBtn from "../EditProductButton";
 function Product({ type, product }) {
   const { addToWishlist, deleteWishList } = useContext(WishlistContext);
 
+  const consumerType = localStorage.getItem("type");
+
   const formatedOriginalPrice = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -35,17 +37,27 @@ function Product({ type, product }) {
       </div>
       <div className="productInfo">
         <h3 className="productTitle">{product.name}</h3>
-        <div className="productDueDate">{product.dueDate}</div>
+        <div className="productDueDate">Vencimento: {product.dueDate}</div>
 
         <div className="priceWishlist">
-          <div className="productPrices">
-            <div className="pastPrice">{formatedOriginalPrice}</div>
-            <div className="currentprice">{formatedPromotionalPrice}</div>
-          </div>
+          {type === "reservedSeller" || type === "reservedConsumer" ? (
+            <div className="productPricesReserved">
+              <div className="pastPrice">{formatedOriginalPrice}</div>
+              <div className="currentprice">{formatedPromotionalPrice}</div>
+            </div>
+          ) : (
+            <div className="productPrices">
+              <div className="pastPrice">{formatedOriginalPrice}</div>
+              <div className="currentprice">{formatedPromotionalPrice}</div>
+            </div>
+          )}
 
           <div className="wishlistBtn">
             {product
-              ? type === "home" && <FaHeart onClick={handleAddWishlist} />
+              ? type === "home" &&
+                consumerType !== "seller" && (
+                  <FaHeart onClick={handleAddWishlist} />
+                )
               : null}
             {product
               ? type === "wishlist" && (
@@ -57,9 +69,10 @@ function Product({ type, product }) {
           </div>
         </div>
         {type === "market-dashboard" && <EditProductBtn product={product} />}
+
         {type === "reservedSeller" ||
         type === "reservedConsumer" ||
-        type === "market-dashboard" ? null : (
+        (consumerType === "seller" && type === "home") ? null : (
           <ReserveButton type={type} product={product} />
         )}
       </div>
