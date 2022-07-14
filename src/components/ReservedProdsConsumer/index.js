@@ -5,6 +5,8 @@ import { ReservedContext } from "../../Providers/reserved";
 import Product from "../Product";
 import { UserContext } from "../../Providers/userProvider";
 
+import emptyListImg from "../../Assets/imgs/emptyImg.svg";
+
 function ReservedProdsConsumer({ type }) {
   const [reservedProducts, setReservedProducts] = useState([]);
   const { userReservedList } = useContext(ReservedContext);
@@ -32,8 +34,11 @@ function ReservedProdsConsumer({ type }) {
             <Product key={index} product={product} type={type} />
           ))
         ) : (
-          <div className="noItemReserved">
-            <h2>Você ainda não tem nenhum item reservado</h2>
+          <div className="emptyImg">
+            <img src={emptyListImg} alt="Lista vazia" />
+            <div className="emptyText">
+              Você ainda não reservou nenhum produto, adicione mais produtos!
+            </div>
           </div>
         )}
       </ul>

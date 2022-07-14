@@ -1,6 +1,8 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 import * as yup from "yup";
@@ -8,6 +10,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 function EditProductForm({ product }) {
+  const navigate = useNavigate();
+
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
   const token = localStorage.getItem("token");
@@ -24,7 +28,10 @@ function EditProductForm({ product }) {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => notifySuccess())
+      .then((response) => {
+        notifySuccess();
+        navigate(0);
+      })
       .catch((err) => notifyError());
   };
 
