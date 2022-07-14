@@ -2,8 +2,12 @@
     .containerRegisterConsumer{
         display: flex;
         min-width: 100vw;
-        height: auto;
+        height: 100vh;
         background-color: #C2E483;
+    }
+    .containerRegisterSeller
+    {
+        height: 100% !important;
     }
 
     .registerLogoHeader{
