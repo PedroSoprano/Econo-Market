@@ -45,6 +45,7 @@
 
 .productTitle {
   font-size: 22px;
+  line-height: 32px;
   font-weight: 700;
   color: var(--dark-blue);
   overflow: hidden;

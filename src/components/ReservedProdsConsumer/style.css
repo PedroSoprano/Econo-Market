@@ -34,6 +34,14 @@
   }
 
   .ReservedProdsConsumerList {
-    flex-wrap: wrap;
+    width: 70vw;
+
+    margin: 0 auto;
+
+    overflow-x: auto;
+
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 }

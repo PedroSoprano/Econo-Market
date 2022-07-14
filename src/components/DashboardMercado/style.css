@@ -67,6 +67,14 @@
   color: var(--medium-blue);
 
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.accountBtn:hover,
+.reservedProductsBtn:hover,
+.wishlistProductsBtn:hover {
+  background-color: var(--medium-blue);
+  color: var(--white);
 }
 
 .icon {
