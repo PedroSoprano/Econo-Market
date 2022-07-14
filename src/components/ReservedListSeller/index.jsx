@@ -33,7 +33,7 @@ function ReservedListSeller({ type }) {
       })
       .then((response) => setSellerReservedList(response.data))
       .catch((err) => console.log(err));
-  }, [token, userId, setSellerReservedList]);
+  });
 
   const userOrders = [];
 
@@ -122,21 +122,11 @@ function ReservedListSeller({ type }) {
           </FormDialog>
         </div>
         <div className="listTitles">
-          <div className="listTitlesClient">
-            Cliente
-          </div>
-          <div className="listTitlesReservedDate">
-            Data da reserva
-          </div>
-          <div className="listTitlesOrderPrice">
-            Valor da reserva
-          </div>
-          <div className="listTitlesOrderGetDate">
-            Retirada
-          </div>
-          <div className="listTitlesOrderTotal">
-            Total de itens
-          </div>
+          <div className="listTitlesClient">Cliente</div>
+          <div className="listTitlesReservedDate">Data da reserva</div>
+          <div className="listTitlesOrderPrice">Valor da reserva</div>
+          <div className="listTitlesOrderGetDate">Retirada</div>
+          <div className="listTitlesOrderTotal">Total de itens</div>
         </div>
         <ul className="sellerReservedProductsContainer">
           {userOrders.length > 0 &&

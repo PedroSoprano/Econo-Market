@@ -21,7 +21,7 @@ function DashboardMercado() {
 
   const navigate = useNavigate();
 
-  const userId = 2;
+  const userId = JSON.parse(localStorage.getItem("id"));
   const myProducts = productList.filter((product) => product.userId === userId);
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -89,15 +89,17 @@ function DashboardMercado() {
           </FormDialog>
         </div>
         <ul className="dashboardProductsContainer">
-          {myProducts.length > 0
-            ? myProducts.map((product, index) => (
-                <Product
-                  key={index}
-                  type={"market-dashboard"}
-                  product={product}
-                />
-              ))
-            : null}
+          {myProducts.length > 0 ? (
+            myProducts.map((product, index) => (
+              <Product
+                key={index}
+                type={"market-dashboard"}
+                product={product}
+              />
+            ))
+          ) : (
+            <h2>Você não possui produtos cadastrados</h2>
+          )}
         </ul>
       </div>
 

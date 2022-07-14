@@ -13,18 +13,12 @@ export const ReservedProvider = ({ children }) => {
   const base_URL = "https://ecomarketapi.herokuapp.com";
 
   const token = localStorage.getItem("token");
-  const userId = localStorage.getItem("id");
 
   function deleteSuccess() {
     toast.success("Produto removido com sucesso!");
   }
 
   const userReservedListRequest = () => {
-    const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("id");
-    if (token === null) {
-      return;
-    }
     axios
       .get(`${base_URL}/reserved`, {
         headers: {

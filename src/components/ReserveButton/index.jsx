@@ -12,7 +12,7 @@ function ReserveButton({ product, type }) {
 
   useEffect(() => {
     userReservedListRequest();
-  });
+  }, []);
 
   const checkReservedList = () => {
     const filterReservedProduct = userReservedList.filter(
