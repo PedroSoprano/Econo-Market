@@ -38,12 +38,18 @@ function ProductForm() {
       .max(30, "Máximo de 30 caracteres!"),
     image: yup.string().required("Insira a url da imagem do produto"),
     description: yup.string().required("Insira a descrição do produto"),
-    originalPrice: yup.string().required("Digite um valor inicial"),
-    promotionalPrice: yup.string().required("Digite um valor atual"),
-    quantity: yup.string().required("Digite a quantidade"),
-    dueDate: yup.string().required("Digite a data de vencimento do produto").matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
+    originalPrice: yup.number().required("Digite um valor inicial"),
+    promotionalPrice: yup.number().required("Digite um valor atual"),
+    quantity: yup.number().required("Digite a quantidade"),
+    dueDate: yup
+      .string()
+      .required("Digite a data de vencimento do produto")
+      .matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
     category: yup.string().required("Digite uma categoria"),
-    getDate: yup.string().required("Digite uma data de retirada").matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
+    getDate: yup
+      .string()
+      .required("Digite uma data de retirada")
+      .matches("[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}", "dd/mm/aaaa"),
   });
 
   const {
@@ -54,13 +60,10 @@ function ProductForm() {
   } = useForm({ resolver: yupResolver(schema) });
 
   const handleRegisterProduct = (data) => {
-    // data.preventDefault();
-
     const id = localStorage.getItem("id");
     const sellerId = parseInt(id);
 
     data.userId = sellerId;
-    console.log(data);
 
     addProduct(data);
 
