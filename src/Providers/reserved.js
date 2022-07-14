@@ -19,8 +19,11 @@ export const ReservedProvider = ({ children }) => {
   }
 
   const userReservedListRequest = () => {
+<<<<<<< HEAD
+=======
     const token = localStorage.getItem("token");
     token !== null &&
+>>>>>>> 449cda05f5372cb0a6362acc3b3b95988e6990aa
     axios
       .get(`${base_URL}/reserved`, {
         headers: {

@@ -47,7 +47,9 @@
   font-size: 22px;
   font-weight: 700;
   color: var(--dark-blue);
-
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -67,17 +69,13 @@
 .priceWishlist {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 
   margin-top: 30px;
 }
 
 .productPricesReserved {
   width: 100%;
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
 }
 
 .pastPrice {

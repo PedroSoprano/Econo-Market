@@ -2,18 +2,28 @@ import "./style.css";
 
 import { useNavigate } from "react-router-dom";
 
-import { FaHeart, FaTrashAlt } from "react-icons/fa";
+import { FaHeart, FaTrashAlt, FaRegCheckCircle } from "react-icons/fa";
 
 import { useContext } from "react";
 import ReserveButton from "../ReserveButton";
 import { WishlistContext } from "../../Providers/wishlist";
 import EditProductBtn from "../EditProductButton";
 import { ReservedContext } from "../../Providers/reserved";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Product({ type, product }) {
   const { addToWishlist, deleteWishList } = useContext(WishlistContext);
   const { handleDeleteReserved } = useContext(ReservedContext);
 
+  const token = localStorage.getItem("token");
+
+  function deleteSuccess() {
+    toast.success("Reserva concluida com sucesso!");
+  }
+
+  const base_URL = "https://ecomarketapi.herokuapp.com";
   const navigate = useNavigate();
 
   const consumerType = localStorage.getItem("type");
@@ -27,6 +37,17 @@ function Product({ type, product }) {
     style: "currency",
     currency: "BRL",
   }).format(product.promotionalPrice);
+
+  const deleteProduct = (id) => {
+    axios
+      .delete(`${base_URL}/products/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => deleteSuccess())
+      .catch((err) => console.log(err));
+  };
 
   const handleAddWishlist = () => {
     addToWishlist(product);
@@ -80,8 +101,11 @@ function Product({ type, product }) {
               : null}
             {product
               ? type === "reservedSeller" && (
-                  <FaTrashAlt
-                    onClick={() => handleDeleteReserved(product.id)}
+                  <FaRegCheckCircle
+                    onClick={() => {
+                      handleDeleteReserved(product.id);
+                      deleteProduct(product.id);
+                    }}
                   />
                 )
               : null}

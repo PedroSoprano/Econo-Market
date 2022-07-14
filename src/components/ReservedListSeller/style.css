@@ -6,7 +6,7 @@
   margin-bottom: 30px;
 }
 
-.listTitles{
+.listTitles {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -14,39 +14,37 @@
 }
 
 .listTitles {
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 19px;
 }
 
-.listTitlesClient{
+.listTitlesClient {
   width: 33%;
   text-align: left;
 }
 
-.listTitlesReservedDate{
+.listTitlesReservedDate {
   width: 15%;
   text-align: right;
 }
 
-.listTitlesOrderPrice{
+.listTitlesOrderPrice {
   width: 15%;
   text-align: center;
 }
 
-.listTitlesOrderGetDate{
+.listTitlesOrderGetDate {
   width: 15%;
   text-align: left;
 }
 
-.listTitlesOrderTotal{
+.listTitlesOrderTotal {
   width: 15%;
   text-align: left;
 }
-
-
 
 @media screen and (min-width: 770px) {
   .reservedSellerContainer {
@@ -54,8 +52,7 @@
     margin-top: 30px;
   }
 
-
-  .listTitles{
+  .listTitles {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -63,38 +60,35 @@
   }
 
   .listTitles {
-    font-family: 'Noto Sans';
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 13px;
     line-height: 19px;
   }
 
-  .listTitlesClient{
+  .listTitlesClient {
     width: 33%;
     text-align: left;
   }
 
-  .listTitlesReservedDate{
+  .listTitlesReservedDate {
     width: 15%;
     text-align: center;
   }
 
-  .listTitlesOrderPrice{
+  .listTitlesOrderPrice {
     width: 15%;
     text-align: center;
   }
 
-  .listTitlesOrderGetDate{
+  .listTitlesOrderGetDate {
     width: 15%;
     text-align: left;
   }
 
-  .listTitlesOrderTotal{
+  .listTitlesOrderTotal {
     width: 15%;
     text-align: left;
   }
-
-
-
 }
