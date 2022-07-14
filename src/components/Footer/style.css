@@ -8,11 +8,10 @@ footer {
   height: 45px;
   background: #6c584c;
 
-  padding: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 
 .footerContent {
