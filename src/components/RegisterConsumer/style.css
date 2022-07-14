@@ -5,6 +5,10 @@
         height: 100vh;
         background-color: #C2E483;
     }
+    .containerRegisterSeller
+    {
+        height: 100% !important;
+    }
 
     .registerLogoHeader{
         margin-top: -30px;
