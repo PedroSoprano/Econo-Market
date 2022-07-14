@@ -38,9 +38,9 @@ function ProductForm() {
       .max(30, "Máximo de 30 caracteres!"),
     image: yup.string().required("Insira a url da imagem do produto"),
     description: yup.string().required("Insira a descrição do produto"),
-    originalPrice: yup.string().required("Digite um valor inicial"),
-    promotionalPrice: yup.string().required("Digite um valor atual"),
-    quantity: yup.string().required("Digite a quantidade"),
+    originalPrice: yup.number().required("Digite um valor inicial"),
+    promotionalPrice: yup.number().required("Digite um valor atual"),
+    quantity: yup.number().required("Digite a quantidade"),
     dueDate: yup
       .string()
       .required("Digite a data de vencimento do produto")
