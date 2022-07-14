@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,6 +19,11 @@ export const ReservedProvider = ({ children }) => {
   }
 
   const userReservedListRequest = () => {
+<<<<<<< HEAD
+=======
+    const token = localStorage.getItem("token");
+    token !== null &&
+>>>>>>> 449cda05f5372cb0a6362acc3b3b95988e6990aa
     axios
       .get(`${base_URL}/reserved`, {
         headers: {
@@ -28,26 +33,6 @@ export const ReservedProvider = ({ children }) => {
       .then((response) => setUserReservedList(response.data))
       .catch((err) => console.log(err));
   };
-
-  // const sellerReservedListRequest = () => {
-  //   const token = localStorage.getItem("token");
-  //   const userId = localStorage.getItem("id");
-  //   axios
-  //     .get(`${base_URL}/reserved?_expand=user&sellerId=${userId}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log("montou");
-  //       return setSellerReservedList(response);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // useEffect(() => {
-  //   sellerReservedListRequest();
-  // });
 
   const addToReservedItem = () => {
     const token = localStorage.getItem("token");
