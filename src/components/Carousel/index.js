@@ -13,7 +13,6 @@ function Carousel() {
   return (
     <>
       <Swiper
-        // spaceBetween={30}
         centeredSlides={true}
         autoplay={{
           delay: 7000,
