@@ -6,13 +6,15 @@ import { ReservedContext } from "../../Providers/reserved";
 import { useEffect } from "react";
 
 function ReserveButton({ product, type }) {
-  const { addToReserved, removeFromReserved } = useContext(ProductContext);
+  const [ btnClass, setBtnClass] = useState('btnAdd')
+  const [ btnName, setBtnName] = useState('Reservar')
+  const { addToReserved } = useContext(ProductContext);
   const { userReservedList, userReservedListRequest } =
     useContext(ReservedContext);
 
   useEffect(() => {
     userReservedListRequest();
-  });
+  }, []);
 
   const checkReservedList = () => {
     const filterReservedProduct = userReservedList.filter(
@@ -26,6 +28,8 @@ function ReserveButton({ product, type }) {
     }
   };
 
+  
+
   return (
     <div className="reserveBtn">
       {type === "market-dashboard" && (
@@ -36,9 +40,7 @@ function ReserveButton({ product, type }) {
       {type === "home" && (
         <>
           {checkReservedList() ? (
-            <button className="btnAdd" onClick={() => addToReserved(product)}>
-              Reservar
-            </button>
+            <button className={btnClass} onClick={() => {setBtnClass('btnDisable'); setBtnName('Já reservado'); addToReserved(product)}}>{btnName}</button>
           ) : (
             <button className="btnDisable" disabled>
               Já reservado
@@ -49,10 +51,8 @@ function ReserveButton({ product, type }) {
       {type === "wishlist" && (
         <>
           {checkReservedList() ? (
-            <button className="btnAdd" onClick={() => addToReserved(product)}>
-              Reservar
-            </button>
-          ) : (
+            <button className={btnClass} onClick={() => {setBtnClass('btnDisable'); setBtnName('Já reservado'); addToReserved(product)}}>{btnName}</button>
+            ) : (
             <button className="btnDisable" disabled>
               Já reservado
             </button>
