@@ -2,7 +2,7 @@
     .containerRegisterConsumer{
         display: flex;
         min-width: 100vw;
-        height: auto;
+        height: 100vh;
         background-color: #C2E483;
     }
 
