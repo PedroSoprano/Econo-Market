@@ -65,6 +65,7 @@ function Login() {
       ? localStorage.setItem("type", "consumer")
       : localStorage.setItem("type", "seller");
     validateUser();
+    setUser(data.data.user);
   };
 
   const LoginFailed = (data) => {
