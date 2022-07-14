@@ -51,7 +51,7 @@ function Login() {
 
   const LoginSuccess = (data) => {
     toast.success("Logado com sucesso!", {
-      position: "top-right",
+      position: "top-left",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -70,7 +70,7 @@ function Login() {
 
   const LoginFailed = (data) => {
     toast.error("Dados Incorretos", {
-      position: "top-right",
+      position: "top-left",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -82,44 +82,43 @@ function Login() {
 
   return (
     <div className="mainContainerLogin">
-    <div className="containerLogin">
-      
-      <div className="ContainerFormLogin">
-        <div className="containerLoginForm">
-          <div className="headercontainerLoginForm">
-            <div className="headercontainerLoginForm2">
-              <img src={Logo} alt="Cadastre-se" className="logoLoginPage"/>
-              <h2>Faça seu Login</h2>
+      <div className="containerLogin">
+        <div className="ContainerFormLogin">
+          <div className="containerLoginForm">
+            <div className="headercontainerLoginForm">
+              <div className="headercontainerLoginForm2">
+                <img src={Logo} alt="Cadastre-se" className="logoLoginPage" />
+                <h2>Faça seu Login</h2>
+              </div>
             </div>
+            <form
+              className="LoginConsumerForm"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <input placeholder="E-mail" {...register("email")} />
+              <span className="errorSpan">{errors.email?.message}</span>
+              <input
+                placeholder="Senha"
+                type="password"
+                {...register("password")}
+              />
+              <span className="errorSpan">{errors.password?.message}</span>
+
+              <ButtonRegister type="submit" text="Login" />
+              <p className="ctaRegister">
+                Não é cadastrado?{" "}
+                <Link to="/consumer/register" className="ctaLinkLogin">
+                  Clique aqui
+                </Link>{" "}
+                e registre-se para aproveitar o Economarket!
+              </p>
+            </form>
           </div>
-          <form
-            className="LoginConsumerForm"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <input placeholder="E-mail" {...register("email")} />
-            <span className="errorSpan">{errors.email?.message}</span>
-            <input
-                  placeholder="Senha"
-                  type="password"
-                  {...register("password")}
-                />
-                <span className="errorSpan">{errors.password?.message}</span>
-            
-            <ButtonRegister type="submit" text="Login" />
-            <p className="ctaRegister">
-              Não é cadastrado?{" "}
-              <Link to="/consumer/register" className="ctaLinkLogin">
-                Clique aqui
-              </Link>{" "}
-              e registre-se para aproveitar o Economarket!
-            </p>
-          </form>
-        </div>
-        <div className="containerLoginForm2">
-          <img src={TaskImg} alt="Cadastre-se" />
+          <div className="containerLoginForm2">
+            <img src={TaskImg} alt="Cadastre-se" />
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

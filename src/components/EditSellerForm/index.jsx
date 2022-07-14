@@ -1,5 +1,7 @@
 import "./style.css";
 
+import { useNavigate } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 
 import axios from "axios";
@@ -12,6 +14,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 function EditSellerForm() {
+  const navigate = useNavigate();
+
   const [sellerData, setSellerData] = useState([]);
   const [sellerAddress, setSellerAddress] = useState([]);
 
@@ -46,7 +50,10 @@ function EditSellerForm() {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => notifySuccess())
+      .then((response) => {
+        notifySuccess();
+        navigate(0);
+      })
       .catch((err) => notifyError());
   };
 
