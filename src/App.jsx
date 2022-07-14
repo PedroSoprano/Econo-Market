@@ -8,7 +8,7 @@ import { WishlistProvider } from "./Providers/wishlist";
 
 function App() {
   return (
-    <>
+    <div id="content-wrap">
       <ProductProvider>
         <ReservedProvider>
           <WishlistProvider>
@@ -27,7 +27,7 @@ function App() {
           </WishlistProvider>
         </ReservedProvider>
       </ProductProvider>
-    </>
+    </div>
   );
 }
 
