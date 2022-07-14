@@ -65,6 +65,7 @@ function Login() {
       ? localStorage.setItem("type", "consumer")
       : localStorage.setItem("type", "seller");
     validateUser();
+    setUser(data.data.user);
   };
 
   const LoginFailed = (data) => {
@@ -82,16 +83,17 @@ function Login() {
   return (
     <div className="mainContainerLogin">
     <div className="containerLogin">
-      <img src={Logo} alt="Cadastre-se" className="logoLoginPage"/>
+      
       <div className="ContainerFormLogin">
         <div className="containerLoginForm">
           <div className="headercontainerLoginForm">
             <div className="headercontainerLoginForm2">
+              <img src={Logo} alt="Cadastre-se" className="logoLoginPage"/>
               <h2>Faça seu Login</h2>
             </div>
           </div>
           <form
-            className="registerConsumerForm"
+            className="LoginConsumerForm"
             onSubmit={handleSubmit(onSubmit)}
           >
             <input placeholder="E-mail" {...register("email")} />
@@ -104,12 +106,12 @@ function Login() {
                 <span className="errorSpan">{errors.password?.message}</span>
             
             <ButtonRegister type="submit" text="Login" />
-            <p className="ctaRegisterSeller">
+            <p className="ctaRegister">
               Não é cadastrado?{" "}
               <Link to="/consumer/register" className="ctaLinkLogin">
                 Clique aqui
               </Link>{" "}
-              e registre-se para aproveitar o Economarketing!
+              e registre-se para aproveitar o Economarket!
             </p>
           </form>
         </div>

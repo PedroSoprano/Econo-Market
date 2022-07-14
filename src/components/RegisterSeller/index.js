@@ -108,7 +108,7 @@ function RegisterSeller() {
   };
 
   return (
-    <div className="containerRegisterConsumer">
+    <div className="containerRegisterConsumer containerRegisterSeller">
       <div className="containerRegisterForm">
         <div className="headerContainerRegisterForm">
           <div className="headerContainerRegisterForm2">
